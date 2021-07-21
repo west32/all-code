@@ -1,0 +1,3 @@
+print("kalkulator wartości lokaty")
+
+
