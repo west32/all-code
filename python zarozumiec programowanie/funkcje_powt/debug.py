@@ -14,3 +14,5 @@ grades_data = {
 
 the_best_grade= find_best_grade(grades_data)
 print(f"najlepsza ocena to {the_best_grade}")
+
+print('kolejny commit')
