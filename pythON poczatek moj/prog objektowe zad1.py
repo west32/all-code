@@ -14,3 +14,13 @@ class Jabłko:
 class Ziemiak:
     pass
 if __name__=='__main__':
+    jabłko1 = Jabłko()
+    jabłko2= Jabłko()
+    ziemniak1 = Ziemiak()
+    ziemniak2 = Ziemiak()
+    print(type(jabłko1))
+    print(type(jabłko2))
+    print(type(ziemniak1))
+    print(type(ziemniak2))
+
+    Orders= [Zamówienie(),Zamówienie(),Zamówienie(),Zamówienie(),Zamówienie()]
