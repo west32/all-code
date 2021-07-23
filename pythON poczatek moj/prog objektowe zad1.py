@@ -24,3 +24,9 @@ if __name__=='__main__':
     print(type(ziemniak2))
 
     Orders= [Zamówienie(),Zamówienie(),Zamówienie(),Zamówienie(),Zamówienie()]
+
+    Produkty = {
+        "mleko": Produkt(),
+        "banany": Produkt(),
+        "białko": Produkt()
+    }
