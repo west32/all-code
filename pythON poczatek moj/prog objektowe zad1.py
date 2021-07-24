@@ -5,28 +5,31 @@
 # Stwórz listę zawierającą 5 zamówień oraz słownik, w którym kluczami będą nazwy
 # produktów, a wartościami instancje klasy produkt.
 
-class Produkt:
+class Product:
     pass
-class Zamówienie:
+class  Order:
     pass
-class Jabłko:
+class Apple:
     pass
-class Ziemiak:
+class Potato:
     pass
 if __name__=='__main__':
-    jabłko1 = Jabłko()
-    jabłko2= Jabłko()
-    ziemniak1 = Ziemiak()
-    ziemniak2 = Ziemiak()
+    jabłko1 = Apple()
+    jabłko2= Apple()
+    ziemniak1 = Potato()
+    ziemniak2 = Potato()
     print(type(jabłko1))
     print(type(jabłko2))
     print(type(ziemniak1))
     print(type(ziemniak2))
 
-    Orders= [Zamówienie(),Zamówienie(),Zamówienie(),Zamówienie(),Zamówienie()]
+    Orders= [Order(),Order(),Order(),Order(),Order()]
 
-    Produkty = {
-        "mleko": Produkt(),
-        "banany": Produkt(),
-        "białko": Produkt()
+    Products = {
+        "mleko": Product(),
+        "banany": Product(),
+        "białko": Product()
     }
+
+    print(Orders)
+    print(Products)
