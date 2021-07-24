@@ -1,14 +1,33 @@
-# Utwórz klasy do reprezentacji Produktu, Zamówienia, Jabłek i Ziemniaków.
+# Dodaj konstruktor przyjmujący odpowiednie argumenty do klas Product, Order, Apple i Potato:
 #
-# Stwórz po kilka obiektów typu jabłko i ziemniak i wypisz ich typ za pomocą funkcji wbudowanej type.
-#
-# Stwórz listę zawierającą 5 zamówień oraz słownik, w którym kluczami będą nazwy
-# produktów, a wartościami instancje klasy produkt.
+# Product: nazwa, nazwa kategorii, cena jednostkowa
+# Order: imię i nazwisko zamawiającego, lista produktów (domyślnie pusta), łączna cena
+# (obliczona w konstruktorze jako suma cen jednostkowych z listy produktów)
+# Apple: nazwa gatunku, rozmiar, cena za kg
+# Potato: nazwa gatunku, rozmiar, cena za kg
+# Utwórz kilka obiektów każdej klasy.
 
 class Product:
-    pass
+    def __init__(self,name,category_name,prize):
+        self.name = name
+        self.category_name = category_name
+        self.prize = prize
 class  Order:
-    pass
+    def __init__(self,orderer_first_name,orderer_last_name,total_prize,produts_list=None):
+        self.orderer_first_name = orderer_first_name
+        self.total_prize = calculate_total_prize(produts_list)
+        self.orderer_last_name = orderer_last_name
+        if produts_list is None:
+            produts_list = []
+        self.product.list = produts_list
+
+def calculate_total_prize(products_list):
+    for Product in products_list:
+        total_prize=0
+        total_prize += Product.prize
+        return total_prize
+
+
 class Apple:
     pass
 class Potato:
@@ -23,6 +42,9 @@ if __name__=='__main__':
     print(type(ziemniak1))
     print(type(ziemniak2))
 
+
+    def add_product_to_list(product, products_list):
+        Order.products_list.append(product)
     Orders= [Order(),Order(),Order(),Order(),Order()]
 
     Products = {
