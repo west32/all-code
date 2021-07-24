@@ -15,6 +15,7 @@ class Product:
 class  Order:
     def __init__(self,orderer_first_name,orderer_last_name,total_prize,produts_list=None):
         self.orderer_first_name = orderer_first_name
+        total_prize= calculate_total_prize(produts_list)
         self.total_prize = calculate_total_prize(produts_list)
         self.orderer_last_name = orderer_last_name
         if produts_list is None:
@@ -29,29 +30,18 @@ def calculate_total_prize(products_list):
 
 
 class Apple:
-    pass
+    def __init__(self,species_name,size,prize_for_kg):
+        self.species_name = species_name
+        self.size = size
+        self.prize_for_kg = prize_for_kg
 class Potato:
-    pass
-if __name__=='__main__':
-    jabłko1 = Apple()
-    jabłko2= Apple()
-    ziemniak1 = Potato()
-    ziemniak2 = Potato()
-    print(type(jabłko1))
-    print(type(jabłko2))
-    print(type(ziemniak1))
-    print(type(ziemniak2))
+    def __init__(self, species_name, size, prize_for_kg):
+        self.species_name = species_name
+        self.size = size
+        self.prize_for_kg = prize_for_kg
 
+eggs= Product(name= 'z_wolnego_wybiegu',category_name='nabiał',prize=1)
+milk = Product(name='łaciate',category_name='nabiał',prize=2)
+orange= Product(name="nice",category_name="fruits",prize=3)
 
-    def add_product_to_list(product, products_list):
-        Order.products_list.append(product)
-    Orders= [Order(),Order(),Order(),Order(),Order()]
-
-    Products = {
-        "mleko": Product(),
-        "banany": Product(),
-        "białko": Product()
-    }
-
-    print(Orders)
-    print(Products)
+Piotr_order= Order("Piotr","Sochacki",total_p)
