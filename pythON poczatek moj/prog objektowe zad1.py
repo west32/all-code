@@ -14,13 +14,13 @@ class Product:
         self.category_name = category_name
         self.prize = prize
 class  Order:
-    def __init__(self,orderer_first_name,orderer_last_name,total_prize,products_list=None):
-        if products_list is None:
-            products_list = []
-        self.products_lists = products_list
+    def __init__(self,orderer_first_name,orderer_last_name,total_prize,produts_list=None):
+        if produts_list is None:
+            produts_list = []
+        self.product_list = produts_list
         self.orderer_first_name = orderer_first_name
-        self.total_prize= total_prize
-        self.total_prize = calculate_total_prize(products_list)
+        total_prize = calculate_total_prize(produts_list)
+        self.total_prize = total_prize
         self.orderer_last_name = orderer_last_name
 
 
@@ -29,8 +29,7 @@ def calculate_total_prize(products_list):
         total_prize=0
         total_prize += product.prize
         return total_prize
-def add_product_to_product_list(order,product):
-    order.prduct_list.append(product)
+
 
 class Apple:
     def __init__(self,species_name,size,prize_for_kg):
@@ -47,7 +46,7 @@ eggs= Product(name= 'z_wolnego_wybiegu',category_name='nabiał',prize=1)
 milk = Product(name='łaciate',category_name='nabiał',prize=2)
 orange= Product(name="nice",category_name="fruits",prize=3)
 
-piotr_order= Order("Piotr","Sochacki", total_prize= 0,products_list=[eggs,milk,orange])
+piotr_order= Order("Piotr","Sochacki", total_prize= 0,produts_list=None)
 
 green_apple = Apple("green","big",3)
 red_apple = Apple('red','small',2)
@@ -57,12 +56,11 @@ old_potato = Potato('old','big', 1)
 young_potato = ('young','small',1.5)
 
 def print_product (product):
-    print(f"produkt : {product.name}, kategoria: {product.category_name}, prize: {product.prize}")
+    print(f"produkt : {product.name}, category: {product.category_name}, prize: {product.prize}")
 def print_order(order):
     print(f"Zamowienie Dla {order.orderer_first_name}{order.orderer_last_name} lista produktów:")
-    for product in order.products_list:
+    for product in order.product_list:
 
         print_product(product)
-    print(f"Łączna kwota do zapłaty: {order.total_prize}")
 
 print_order(piotr_order)
