@@ -46,7 +46,7 @@ eggs= Product(name= 'z_wolnego_wybiegu',category_name='nabiał',prize=1)
 milk = Product(name='łaciate',category_name='nabiał',prize=2)
 orange= Product(name="nice",category_name="fruits",prize=3)
 
-piotr_order= Order("Piotr","Sochacki", total_prize= 0,produts_list=None)
+piotr_order= Order("Piotr","Sochacki", total_prize= 0,produts_list=[eggs,milk,orange])
 
 green_apple = Apple("green","big",3)
 red_apple = Apple('red','small',2)
