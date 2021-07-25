@@ -6,7 +6,8 @@
 # Apple: nazwa gatunku, rozmiar, cena za kg
 # Potato: nazwa gatunku, rozmiar, cena za kg
 # Utwórz kilka obiektów każdej klasy.
-
+# Napisz funkcję wypisującą produkt i zamówienie.
+# Podczas wypisywania zamówienia skorzystaj z wypisywania produktu.
 class Product:
     def __init__(self,name,category_name,prize):
         self.name = name
@@ -14,19 +15,19 @@ class Product:
         self.prize = prize
 class  Order:
     def __init__(self,orderer_first_name,orderer_last_name,total_prize,produts_list=None):
-        self.orderer_first_name = orderer_first_name
-        total_prize= sum(Product.product)
-        self.total_prize = calculate_total_prize(produts_list)
-        self.orderer_last_name = orderer_last_name
         if produts_list is None:
             produts_list = []
-        Order.product.list.append(Product)
-        self.product.list = produts_list
+        self.product_list = produts_list
+        self.orderer_first_name = orderer_first_name
+        total_prize = calculate_total_prize(produts_list)
+        self.total_prize = total_prize
+        self.orderer_last_name = orderer_last_name
+
 
 def calculate_total_prize(products_list):
-    for Product in products_list:
+    for product in products_list:
         total_prize=0
-        total_prize += Product.prize
+        total_prize += product.prize
         return total_prize
 
 
@@ -45,7 +46,7 @@ eggs= Product(name= 'z_wolnego_wybiegu',category_name='nabiał',prize=1)
 milk = Product(name='łaciate',category_name='nabiał',prize=2)
 orange= Product(name="nice",category_name="fruits",prize=3)
 
-piotr_order= Order("Piotr","Sochacki",total_p)
+piotr_order= Order("Piotr","Sochacki", total_prize= 0,produts_list=None)
 
 green_apple = Apple("green","big",3)
 red_apple = Apple('red','small',2)
@@ -53,3 +54,13 @@ dark_red_appl = Apple ('dark red', 'xxl',5)
 
 old_potato = Potato('old','big', 1)
 young_potato = ('young','small',1.5)
+
+def print_product (product):
+    print(f"produkt : {product.name}, category: {product.category_name}, prize: {product.prize}")
+def print_order(order):
+    print(f"Zamowienie Dla {order.orderer_first_name}{order.orderer_last_name} lista produktów:")
+    for product in order.product_list:
+
+        print_product(product)
+
+print_order(piotr_order)
