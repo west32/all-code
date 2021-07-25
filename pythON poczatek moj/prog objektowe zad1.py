@@ -8,27 +8,26 @@
 # Utwórz kilka obiektów każdej klasy.
 # Napisz funkcję wypisującą produkt i zamówienie.
 # Podczas wypisywania zamówienia skorzystaj z wypisywania produktu.
+# Napisz funkcję generującą zamówienie z losową listą produktów na przykład:
+# Produkt-1, Produkt-2 itd.
+import random
+
 class Product:
     def __init__(self,name,category_name,prize):
         self.name = name
         self.category_name = category_name
         self.prize = prize
 class  Order:
-    def __init__(self,orderer_first_name,orderer_last_name,total_prize,produts_list=None):
-        if produts_list is None:
-            produts_list = []
-        self.product_list = produts_list
-        self.orderer_first_name = orderer_first_name
-        total_prize = calculate_total_prize(produts_list)
-        self.total_prize = total_prize
+    def __init__(self,orderer_first_name,orderer_last_name,products_list=None):
         self.orderer_last_name = orderer_last_name
-
-
-def calculate_total_prize(products_list):
-    for product in products_list:
-        total_prize=0
-        total_prize += product.prize
-        return total_prize
+        if products_list is None:
+            products_list = []
+        self.product_list = products_list
+        self.orderer_first_name = orderer_first_name
+        total_prize = 0
+        for product in products_list:
+            total_prize += product.prize
+        self.total_prize= total_prize
 
 
 class Apple:
@@ -46,7 +45,7 @@ eggs= Product(name= 'z_wolnego_wybiegu',category_name='nabiał',prize=1)
 milk = Product(name='łaciate',category_name='nabiał',prize=2)
 orange= Product(name="nice",category_name="fruits",prize=3)
 
-piotr_order= Order("Piotr","Sochacki", total_prize= 0,produts_list=[eggs,milk,orange])
+piotr_order= Order("Piotr","Sochacki", products_list=[eggs,milk,orange])
 
 green_apple = Apple("green","big",3)
 red_apple = Apple('red','small',2)
@@ -62,5 +61,21 @@ def print_order(order):
     for product in order.product_list:
 
         print_product(product)
+    print(f"Łączna kwota zamówienia to: {order.total_prize}")
 
-print_order(piotr_order)
+def order_with_random_products_list(order_first_name,order_last_name):
+    number_of_products = random.randint(1,20)
+    products_list=[]
+    for product_number in range (number_of_products):
+        product_name= f"Product-{product_number}"
+
+    order=Order(order_first_name,order_last_name,)
+    return order
+
+
+
+
+if __name__=='__main__':
+    order= piotr_order
+    print_order(order)
+
