@@ -10,6 +10,9 @@
 # Podczas wypisywania zamówienia skorzystaj z wypisywania produktu.
 # Napisz funkcję generującą zamówienie z losową listą produktów na przykład:
 # Produkt-1, Produkt-2 itd.
+import random
+
+
 class  Product:
     def __init__(self,name,category,prize):
         self.name = name
@@ -51,21 +54,34 @@ def print_order (order):
     print(f"łączna kwota do zapłaty to: {order.total_prize} PLN")
     print(20 * "=")
     print()
+def generate_an_order():
+    number_of_products= random.randint(1,20)
+    products= []
+    for product_number in range (number_of_products):
+        product_name= f"Product- {product_number}"
+        product_category = "inne"
+        product_prize = random.randint(1,30)
+        product = Product (product_name,product_category,product_prize)
+        products.append(product)
+    order = Order("Bartłomiej", "Juda",products)
+    return order
 
 def run_homework ():
     green_Apple = Apple ("green", "small", 4.5)
     red_apple = Apple ("red", "big", 6.5)
-    print(green_Apple)
-    print(red_apple)
+
 
     old_potato = Potato("old", "medium", 2)
-    print(old_potato)
+
 
     cookie = Product ("cookie","food",3)
     milk = Product ("milk","food", 5)
 
     Bartek_order = Order ("Bartek","Juda",products_list=[cookie,milk])
-    print_order(Bartek_order)
+    first_order= generate_an_order()
+    print_order(first_order)
+    second_order = generate_an_order()
+    print_order(second_order)
 
 
 if __name__ == '__main__':
