@@ -10,7 +10,8 @@
 # (wykorzystując wcześniej napisaną metodę z klasy OrderElement) i wykorzystaj ją w konstruktorze
 # do inicjalizacji łącznej wartości zamówienia.
 from class_product import Product
-class Order_Element:
+
+class OrderElement:
     def __init__(self,product_information, amount):
         self.amount = amount
         self.product_information = product_information
