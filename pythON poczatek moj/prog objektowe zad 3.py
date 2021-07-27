@@ -10,6 +10,13 @@
 # Podczas wypisywania zamówienia skorzystaj z wypisywania produktu.
 # Napisz funkcję generującą zamówienie z losową listą produktów na przykład:
 # Produkt-1, Produkt-2 itd.
+#
+# Podziel projekt - utwórz nowy pakiet shop i przenieś do osobnych modułów (plików) w pakiecie store:
+# Klasę Apple
+# Klasę Potato
+# Klasę Product oraz funkcje generujące i wypisujące produkt
+# Klasę Order oraz funkcje generujące i wypisujące zamówienie
+# Utwórz skrypt uruchomieniowy main, który importuje i wykorzystuje powyższe klasy i funkcje
 import random
 
 
