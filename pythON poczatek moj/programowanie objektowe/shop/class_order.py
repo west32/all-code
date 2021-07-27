@@ -1,6 +1,5 @@
 import random
-from shop.class_product import Product
-from shop.cla
+from shop.class_Order_element import OrderElement
 
 
 class Order:
@@ -34,7 +33,7 @@ def generate_an_order():
         product_name= f"Product- {product_number}"
         product_category = "inne"
         product_prize = random.randint(1,30)
-        product = Order_element ()
+        product = OrderElement (product,)
         products.append(product)
     order = Order("Bartłomiej", "Juda",products)
     return order

@@ -12,11 +12,11 @@
 from class_product import Product
 
 class OrderElement:
-    def __init__(self,product_information, amount):
+    def __init__(self,product, amount):
         self.amount = amount
-        self.product_information = product_information
+        self.product = product
+    def calculate_position_prize(self,):
+        return self.amount * self.product.prize
     def print_self (self,):
-        print(f"info:{self.product_information}, ilość {self.amount}")
-    def calculate_position_prize(self, unit_prize):
-        unit_prize = Product.prize
-        return self.amount * unit_prize
+        self.product.print_self()
+        print(f"\t\t x {self.amount}")

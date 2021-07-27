@@ -2,7 +2,6 @@ from shop.class_order import generate_an_order
 from shop.class_apple import Apple
 
 
-
 def run_homework ():
 
     green_apple = Apple (species_name="green",size="small",prize_per_kg=3)
