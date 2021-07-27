@@ -16,7 +16,7 @@ class Order:
 
 
 
-def print_order (order):
+def print_order (self):
     print(20*"=")
     print(f"zamówienie dla : {order.orderer_first_name} {order.orderer_last_name}")
     print("zamówione produkty:")
