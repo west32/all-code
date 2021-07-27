@@ -18,12 +18,12 @@ class Order:
 
 def print_order (self):
     print(20*"=")
-    print(f"zamówienie dla : {order.orderer_first_name} {order.orderer_last_name}")
+    print(f"zamówienie dla : {self.orderer_first_name} {self.orderer_last_name}")
     print("zamówione produkty:")
-    for product in order.products_list:
+    for product in self.products_list:
         print("\t", end="")
         print_product(product)
-    print(f"łączna kwota do zapłaty to: {order.total_prize} PLN")
+    print(f"łączna kwota do zapłaty to: {self.total_prize} PLN")
     print(20 * "=")
     print()
 def generate_an_order():
