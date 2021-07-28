@@ -9,7 +9,7 @@
 # Napisz metodę obliczającą łączną wartość zamówienia jako sumę wartości wszystkich pozycji
 # (wykorzystując wcześniej napisaną metodę z klasy OrderElement) i wykorzystaj ją w konstruktorze
 # do inicjalizacji łącznej wartości zamówienia.
-from class_product import Product
+from shop.class_product import Product
 
 class OrderElement:
     def __init__(self,product, amount):
@@ -17,19 +17,30 @@ class OrderElement:
         self.product = product
     def calculate_position_prize(self,):
         return self.amount * self.product.prize
-    def print_self (self,):
+    def print_self (self):
         self.product.print_self()
         print(f"\t\t x {self.amount}")
 
-class Chujtam:
-    def __init__(self,chuj,dupa):
-        self.dupa = dupa
-        self.chuj = chuj
-    def print_self(self):
-        self.dupa.print_self()
-        print(f"{self.chuj}")
-def example():
-    dupachuj= Chujtam ("maly", "duza")
-    dupachuj.print_self()
 
-example()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # def print_self (self,):
+    #     self.product.print_self()
+    #     print(f"\t\t x {self.amount}")
+
+
+
