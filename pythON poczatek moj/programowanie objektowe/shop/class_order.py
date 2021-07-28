@@ -5,7 +5,7 @@ from shop.class_Order_element import OrderElement
 class Order:
     def __init__(self,orderer_first_name, orderer_last_name,positions_list=None):
         if positions_list is None:
-            positions_list_list = []
+            positions_list = []
         self.positions_list = positions_list
         self.orderer_last_name = orderer_last_name
         self.orderer_first_name = orderer_first_name

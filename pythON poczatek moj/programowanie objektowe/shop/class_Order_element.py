@@ -20,3 +20,16 @@ class OrderElement:
     def print_self (self,):
         self.product.print_self()
         print(f"\t\t x {self.amount}")
+
+class Chujtam:
+    def __init__(self,chuj,dupa):
+        self.dupa = dupa
+        self.chuj = chuj
+    def print_self(self):
+        self.dupa.print_self()
+        print(f"{self.chuj}")
+def example():
+    dupachuj= Chujtam ("maly", "duza")
+    dupachuj.print_self()
+
+example()
