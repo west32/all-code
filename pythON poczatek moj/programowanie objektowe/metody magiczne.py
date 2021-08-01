@@ -85,12 +85,10 @@ class Money:
         return self.as_cents() < other.as_cents()
 
 def compare_money_list(first,second):
-    for money in second:
-        if money not in first:
+    for money in first:
+        if money not in second:
             return False
-        for money in first:
-            if money not in second:
-                return False
+
         return True
 
 def run_example():
@@ -107,20 +105,22 @@ def run_example():
 
     some_money=[
         Money(dollars=1, cents=20),
-        Money(dollars=3, cents=50),
+        Money(dollars=3, cents=52),
         Money(dollars=50, cents=20)
 
     ]
 
 
     other_money = [
-        Money(dollars=50, cents=21),
-        Money(dollars=3, cents=50),
+        Money(dollars=50, cents=20),
+        Money(dollars=34, cents=50),
         Money(dollars=1, cents=20),
 
 
     ]
     print(compare_money_list(some_money,other_money))
+    school = create_school_with_students("Hogwart")
+    print(school)
 
 if __name__ =='__main__':
     run_example()

@@ -12,15 +12,15 @@
 from shop.class_product import Product
 # dwie pozycje w zamówieniu są równe jeżeli ilość jest równa oraz ich produkty są równe
 class OrderElement:
-    def __init__(self,product, amount):
-        self.amount = amount
+    def __init__(self,product, quantity):
+        self.amount = quantity
         self.product = product
     def calculate_position_prize(self,):
-        return self.amount * self.product.prize
+        return self.quantity * self.product.prize
     def __eq__(self, other):
         if self.__class__ != other.__class__:
             return NotImplemented
-        return  self.product == other.product and self.amount == other.amount
+        return  self.product == other.product and self.quantity == other.quantity
     def __str__(self):
 
         return f"{self.product} x {self.amount}"

@@ -1,6 +1,6 @@
 from shop.class_product import Product
 from shop.class_Order_element import OrderElement
-from shop.class_order import Order
+from shop.class_order import Order, generate_an_order
 
 def run_homework ():
 
@@ -10,15 +10,15 @@ def run_homework ():
     # print(red_apple)
 
     # first_order= generate_an_order()
-    # print (len(first_order))
+    # print (first_order)
     # second_order = generate_an_order()
     # print(second_order)
 
     cookie = Product (name= "cookie", category="food", prize=3)
     shoes = Product (name="rebook", category="clothes", prize=35)
 
-    first_order_elements =[ OrderElement (product=cookie, amount=43) , OrderElement(product=shoes, amount=3) ]
-    second_order_elements = [OrderElement(product=cookie, amount=4), OrderElement(product=shoes, amount=5)]
+    first_order_elements =[ OrderElement (product=cookie, quantity=36) , OrderElement(product=shoes, quantity=3),  ]
+    second_order_elements = [OrderElement(product=cookie, quantity=3), OrderElement(product=shoes, quantity=39)]
     first_order = Order (orderer_first_name="Bartek", orderer_last_name="Juda", order_elements= first_order_elements)
     second_order = Order(orderer_first_name="Bartek", orderer_last_name="Juda", order_elements= second_order_elements)
     if first_order == second_order:
