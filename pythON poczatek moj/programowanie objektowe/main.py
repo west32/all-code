@@ -8,23 +8,26 @@ def run_homework ():
     # red_apple = Apple (species_name="red", size="bif", prize_per_kg=5)
     # print(green_apple)
     # print(red_apple)
+    cookie = Product(name="cookie", category="food", prize=3)
 
-    # first_order= generate_an_order()
-    # print (first_order)
+    first_order= generate_an_order()
+    print (first_order)
+    first_order.add_product(product=cookie,quantity=5)
+    print(first_order)
     # second_order = generate_an_order()
     # print(second_order)
 
-    cookie = Product (name= "cookie", category="food", prize=3)
-    shoes = Product (name="rebook", category="clothes", prize=35)
 
-    first_order_elements =[ OrderElement (product=cookie, quantity=36) , OrderElement(product=shoes, quantity=3),  ]
-    second_order_elements = [OrderElement(product=cookie, quantity=3), OrderElement(product=shoes, quantity=39)]
-    first_order = Order (orderer_first_name="Bartek", orderer_last_name="Juda", order_elements= first_order_elements)
-    second_order = Order(orderer_first_name="Bartek", orderer_last_name="Juda", order_elements= second_order_elements)
-    if first_order == second_order:
-        return print("Te zamówienia są równe")
-    else:
-        print ("nie są równe")
+    # shoes = Product (name="rebook", category="clothes", prize=35)
+    #
+    # first_order_elements =[ OrderElement (product=cookie, quantity=3) , OrderElement(product=shoes, quantity=3),  ]
+    # second_order_elements = [OrderElement(product=cookie, quantity=3), OrderElement(product=shoes, quantity=3)]
+    # first_order = Order (orderer_first_name="Bartek", orderer_last_name="Juda", order_elements= first_order_elements)
+    # second_order = Order(orderer_first_name="Bartek", orderer_last_name="Juda", order_elements= second_order_elements)
+    # if first_order == second_order:
+    #     return print("Te zamówienia są równe")
+    # else:
+    #     print ("nie są równe")
 
 if __name__ == '__main__':
     run_homework()

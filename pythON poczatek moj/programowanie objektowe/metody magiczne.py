@@ -2,48 +2,127 @@ import random
 
 
 class Student:
+
     def __init__(self,first_name,last_name):
         self.last_name = last_name
         self.first_name = first_name
-        self.promoted = False
+        self.promote= False
+        self._final_grades = []
+
+    def add_final_grade(self, grade):
+        self._final_grades.append(Grade(value=grade))
+        if not grade.is_passing():
+            self.promote = False
+
+    def promote(self):
+        self.promote = True
+
+
     # def print_self(self): zamienimy metode print_self na magiczna __str__
     #     print(f"student: {self.first_name} {self.last_name} prmoted:{self.promoted}")
     def __str__(self):
-        return f"student: {self.first_name} {self.last_name} prmoted:{self.promoted}"
+        return f"student: {self.first_name} {self.last_name} prmoted:{self.promote}"
 
     def __repr__(self):
-        return f"<Student first_name='{self.first_name}',last_name= '{self.last_name}', promoted = {self.promoted}>"
+        return f"<Student first_name='{self.first_name}',last_name= '{self.last_name}', promoted = {self.promote}>"
 
-    def promote(self):
-        self.promoted = True
 
-class School :
-    def __init__(self,name,students):
+
+# class School :
+#     MAX_STUDENTS_NUMBER = 20
+#     def __init__(self,name,students):
+#         self.name = name
+#         self.students = students
+#         self.promote_lucky_student()
+#
+#     def promote_lucky_student(self):
+#         for index, student in enumerate(self.students):
+#             if index % 3 == 0:
+#                 student.promote()
+#
+#     def __str__(self):
+#         students= ""
+#         for student in self.students:
+#             students += "\n"
+#             students += str(student)
+#         return f"School: {self.name},{len(self.students)},students: {students}"
+#
+#     def assign_student(self, student):
+#         # if len(self.students) < School.MAX_STUDENTS_NUMBER:
+#         if len(self.students) < self.MAX_STUDENTS_NUMBER:
+#             self.students.append(student)
+#         else:
+#             print("Nie ma już miejsca!")
+class School:
+
+    MAX_STUDENTS_NUMBER = 20
+
+    def __init__(self, name, students):
         self.name = name
         self.students = students
+        self._promote_lucky_students()
+
+    def _promote_lucky_students(self):
+        for index, student in enumerate(self.students):
+            if index % 3 == 0:
+                student.promote()
+
     def __str__(self):
-        students= ""
+        students = ""
         for student in self.students:
             students += "\n"
             students += str(student)
-        return f"School: {self.name},{len(self.students)},students: {students}"
-    def __repr__(self):
-        students_reps = []
-        for student in self.students:
-            students_reps.append(repr(student))
-        all_students_repr = ", ".join(students_reps)
 
-        return f"<School name='{self.name}',students=[{all_students_repr}]>"
+        return f"School: {self.name}, with {len(self.students)} students: {students}"
 
-def create_school_with_students(school_name):
-    number_of_students = random.randint(1,20)
-    students = []
-    for student_number in range (number_of_students):
-        first_name = f"Student- {student_number}"
-        last_name = "Smith"
-        students.append(Student(first_name,last_name))
-    school = School(school_name,students)
-    return school
+    @classmethod
+    def create_school_with_students(cls, school_name):
+        number_of_students = random.randint(1, cls.MAX_STUDENTS_NUMBER)
+        students = []
+        for student_number in range(number_of_students):
+            first_name = f"Student-{student_number}"
+            last_name = "Smith"
+            students.append(Student(first_name, last_name))
+
+        school = School(school_name, students)
+        return school
+
+    def assign_student(self, student):
+        # if len(self.students) < School.MAX_STUDENTS_NUMBER:
+        if len(self.students) < self.MAX_STUDENTS_NUMBER:
+            self.students.append(student)
+        else:
+            print("Nie ma już miejsca!")
+# def __repr__(self):
+    #     students_reps = []
+    #     for student in self.students:
+    #         students_reps.append(repr(student))
+    #     all_students_repr = ", ".join(students_reps)
+
+    # def promote(self,student):
+    #     student.promote = True
+
+        # return f"<School name='{self.name}',students=[{all_students_repr}]>"
+    @classmethod
+    def create_school_with_students(cls, school_name):
+        number_of_students = random.randint(1,cls.MAX_STUDENTS_NUMBER)
+        students = []
+        for student_number in range (number_of_students):
+            first_name = f"Student- {student_number}"
+            last_name = "Smith"
+            students.append(Student(first_name,last_name))
+        school = School(school_name,students)
+        return school
+
+
+class Grade:
+    FAILING_GRADE = 1
+
+    def __init__(self,value):
+        self.value = value
+    def is_passing(self):
+        return self.value > Grade.FAILING_GRADE
+
 
 # def run_example():
 #     school= create_school_with_students("Hogwart")
@@ -89,7 +168,7 @@ def compare_money_list(first,second):
         if money not in second:
             return False
 
-        return True
+    return True
 
 def run_example():
     # print(f"{Money(dollars=1,cents=20)}=={Money(dollars=100,cents=2)}?")
@@ -105,7 +184,7 @@ def run_example():
 
     some_money=[
         Money(dollars=1, cents=20),
-        Money(dollars=3, cents=52),
+        Money(dollars=3, cents=50),
         Money(dollars=50, cents=20)
 
     ]
@@ -113,14 +192,20 @@ def run_example():
 
     other_money = [
         Money(dollars=50, cents=20),
-        Money(dollars=34, cents=50),
+        Money(dollars=3, cents=50),
         Money(dollars=1, cents=20),
 
 
     ]
-    print(compare_money_list(some_money,other_money))
-    school = create_school_with_students("Hogwart")
+    # print(compare_money_list(some_money,other_money))
+    # school = create_school_with_students("Hogwart") od kiedy funkcja ta jest przeniesiona do wewnatrz klasy
+    # jako metoda klasy, trzeba bedzie sie juz odwolac w inny sposob do niej
+    school = School.create_school_with_students("Hogwart")
     print(school)
+
+    print(f"w szkole może być maksymalnie {school.MAX_STUDENTS_NUMBER} uczniów")
+#  co Ciekawe w ten sposob moge sie odwolywac juz do konkretnego elementu/zmiennej school. zamiast do calej
+#  School. i ona tez bedzie miala dostep do tej wartosci zapisanej wewnatrz klasy
 
 if __name__ =='__main__':
     run_example()
