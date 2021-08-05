@@ -1,10 +1,5 @@
-numbers = [5,2,5,2,2]
-
+numbers = [3,34,53,2,64,234,643,23,54,6,23,54,]
 for number in numbers:
-    string = ""
-    for y in range (number):
-        string += 'x'
-    print(string)
-
-# string = "x"
-# print (string + "x")
+    if numbers.count(number) > 1:
+        numbers.remove(number)
+print(numbers)
