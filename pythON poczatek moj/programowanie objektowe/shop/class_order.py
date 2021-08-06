@@ -30,10 +30,10 @@ class Order:
             return NotImplemented
         if self.orderer_first_name != other.orderer_first_name or self.orderer_last_name != other.orderer_last_name:
             return False
-        if len(self.order_elements) != len(other._order_elements):
+        if len(self.order_elements) != len(other.order_elements):
             return False
         for order_elemenets in self.order_elements:
-            if order_elemenets not in other._order_elements:
+            if order_elemenets not in other.order_elements:
                 return False
         return True
 
@@ -42,6 +42,8 @@ class Order:
             for element in self.order_elements:
                 _total_prize += element.calculate_position_prize()
             return _total_prize
+    def total_prize_to_sort(self):
+        self._total_prize
     def __str__(self):
         gap_between = 20*"="
         orderer = f"zamówienie dla : {self.orderer_first_name} {self.orderer_last_name}"
