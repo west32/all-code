@@ -23,7 +23,7 @@ class Order:
         self.order_elements = order_elements
         self.orderer_last_name = orderer_last_name
         self.orderer_first_name = orderer_first_name
-        self._total_prize = self.calculate_order_prize()
+        self.total_prize = self.calculate_order_prize()
 
     def __eq__(self, other):
         if self.__class__ != other.__class__:
@@ -42,12 +42,13 @@ class Order:
             for element in self.order_elements:
                 total_prize += element.calculate_position_prize()
             return total_prize
+
     def total_prize_to_sort(self):
-        return self._total_prize
+        return self.total_prize
     def __str__(self):
         gap_between = 20*"="
         orderer = f"zamówienie dla : {self.orderer_first_name} {self.orderer_last_name}"
-        total = f"łączna kwota do zapłaty to: {self._total_prize} PLN"
+        total = f"łączna kwota do zapłaty to: {self.total_prize} PLN"
         products = "zamówione produkty:\n"
         for element in self.order_elements:
            products += f" \t {element}\n"
@@ -61,7 +62,7 @@ class Order:
         else:
             new_element= OrderElement(product,quantity)
             self.order_elements.append(new_element)
-            self._total_prize = self.calculate_order_prize()
+            self.total_prize = self.calculate_order_prize()
     @classmethod
     def generate_an_order(cls):
         number_of_products= random.randint(1,6)

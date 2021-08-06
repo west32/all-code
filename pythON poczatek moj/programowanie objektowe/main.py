@@ -16,7 +16,7 @@ def run_homework ():
     for order in orders_list:
         print(order)
 
-    orders_list.sort(key=get_total_prize(order))
+    orders_list.sort(
 
 
     # green_apple = Product (name="zielone jabłko", category="warzywa i owoce", prize=4)
