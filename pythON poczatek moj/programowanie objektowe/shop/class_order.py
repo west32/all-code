@@ -38,12 +38,12 @@ class Order:
         return True
 
     def calculate_order_prize(self):
-            _total_prize = 0
+            total_prize = 0
             for element in self.order_elements:
-                _total_prize += element.calculate_position_prize()
-            return _total_prize
+                total_prize += element.calculate_position_prize()
+            return total_prize
     def total_prize_to_sort(self):
-        self._total_prize
+        return self._total_prize
     def __str__(self):
         gap_between = 20*"="
         orderer = f"zamówienie dla : {self.orderer_first_name} {self.orderer_last_name}"
@@ -63,7 +63,8 @@ class Order:
             self.order_elements.append(new_element)
             self._total_prize = self.calculate_order_prize()
     @classmethod
-    def generate_an_order(cls,number_of_products):
+    def generate_an_order(cls):
+        number_of_products= random.randint(1,6)
         order_elements = []
         for product_number in range (number_of_products):
             product_name = f"Product- {product_number}"

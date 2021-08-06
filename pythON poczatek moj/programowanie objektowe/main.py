@@ -6,8 +6,18 @@ from shop.class_product import Product
 from shop.class_Order_element import OrderElement
 from shop.class_order import Order
 from shop.class_tax_caculator import Tax_calculator
+def get_total_prize(order):
+    return order.total_prize_to_sort()
 
 def run_homework ():
+    orders_list= []
+    for _ in range(5):
+        orders_list.append(Order.generate_an_order())
+    for order in orders_list:
+        print(order)
+
+    orders_list.sort(key=get_total_prize(order))
+
 
     # green_apple = Product (name="zielone jabłko", category="warzywa i owoce", prize=4)
     # red_apple = Product (name="czerwone jabłko", category="warzywa i owoce", prize=7)
