@@ -1,8 +1,8 @@
 from estudent.school import School
 
 
-def grades_avg_for_student(student):
-    return student.grades_avg()
+# def grades_avg_for_student(student):
+#     return student.grades_avg()
 
 
 def run_example():
@@ -13,7 +13,7 @@ def run_example():
     print("-" * 20)
 
     # students.sort()
-    students.sort(key=grades_avg_for_student)
+    students.sort(key= lambda student: student.grades_avg())
 
     for student in students:
         print(student)

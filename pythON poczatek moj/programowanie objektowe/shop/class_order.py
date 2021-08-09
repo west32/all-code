@@ -10,12 +10,13 @@
 import random
 from shop.class_product import Product
 from shop.class_Order_element import OrderElement
+from shop.discount_policy import standart_policy
 
 
 class Order:
 
     MAX_ORDER_ELEMENTS = 5
-    def __init__(self, orderer_first_name, orderer_last_name, order_elements=None):
+    def __init__(self, orderer_first_name, orderer_last_name, order_elements=None, discount_policy=None):
         if order_elements is None:
             order_elements = []
         if len(order_elements) > Order.MAX_ORDER_ELEMENTS:
@@ -23,6 +24,9 @@ class Order:
         self.order_elements = order_elements
         self.orderer_last_name = orderer_last_name
         self.orderer_first_name = orderer_first_name
+        if discount_policy is None:
+            discount_policy= standart_policy
+        self.discount_policy = discount_policy
         self.total_prize = self.calculate_order_prize()
 
     def __eq__(self, other):
@@ -41,10 +45,9 @@ class Order:
             total_prize = 0
             for element in self.order_elements:
                 total_prize += element.calculate_position_prize()
-            return total_prize
+            return self.discount_policy(total_prize)
 
-    def total_prize_to_sort(self):
-        return self.total_prize
+
     def __str__(self):
         gap_between = 20*"="
         orderer = f"zamówienie dla : {self.orderer_first_name} {self.orderer_last_name}"
@@ -77,3 +80,5 @@ class Order:
 
         order = Order("Bartłomiej", "Juda", order_elements)
         return order
+
+

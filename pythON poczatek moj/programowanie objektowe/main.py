@@ -1,22 +1,90 @@
 # Wygeneruj 5 losowych zamówień i posortuj je rosnąco po ich łącznej cenie.
 #
 # Zastosuj własną funkcję zwracającą odpowiednią wartość, która będzie używana do porównania przez funkcję sortującą.
+import random
 
 from shop.class_product import Product
 from shop.class_Order_element import OrderElement
 from shop.class_order import Order
 from shop.class_tax_caculator import Tax_calculator
-def get_total_prize(order):
-    return order.total_prize_to_sort()
+from shop.discount_policy import loyal_policy, christmas_policy
 
-def run_homework ():
-    orders_list= []
-    for _ in range(5):
-        orders_list.append(Order.generate_an_order())
-    for order in orders_list:
-        print(order)
+# def generate_order_elements():
+#     order_elements = []
+#     for product_number in range(1,5):
+#         product_name = product_number
+#         product_category = "inne"
+#         product_prize = random.randint (1,10)
+#         product= Product(product_name,product_category,product_prize)
+#         product_quantity = random.randint(1,10)
+#         order_elements.append(OrderElement(product,product_quantity))
+#     return order_elements
+#
 
-    orders_list.sort(
+def generate_order_elements():
+    order_elements = []
+    for product_number in range(1, 6):
+        product_name = product_number
+        category = "inne"
+        prize = random.randint(3, 20)
+        product = Product(product_name, category, prize)
+        quantity = random.randint(1, 6)
+        order_element = OrderElement(product, quantity)
+        order_elements.append(order_element)
+    return order_elements
+
+
+
+
+def run_example():
+
+    first_name = "bartek"
+    last_name = "Juda"
+    order_elements = generate_order_elements()
+    standart_order = Order(first_name, last_name, order_elements)
+    loyal_order = Order(first_name, last_name, order_elements, discount_policy=loyal_policy)
+    christmas_order = Order(first_name, last_name, order_elements, discount_policy=christmas_policy)
+
+    print(standart_order)
+    print(loyal_order)
+    print(christmas_order)
+
+
+
+    # first_name= "Bartłomiej"
+    # last_name = "Juda"
+    # order_elements= generate_order_elements()
+    # defoult_order= Order(first_name,last_name,order_elements,)
+    # loyal_order = Order(first_name,last_name,order_elements,discount_policy=loyal_policy)
+    # christmas_order= Order(first_name,last_name,order_elements,discount_policy=christmas_policy)
+    #
+    # print(defoult_order)
+    # print(loyal_order)
+    # print(christmas_order)
+
+
+
+if __name__ == "__main__":
+    run_example()
+
+
+
+
+
+
+# def get_total_prize(order):
+#     return order.total_prize_to_sort()
+#
+# def run_homework ():
+#     orders_list= []
+#     for _ in range(5):
+#         orders_list.append(Order.generate_an_order())
+#
+#
+#     orders_list.sort(key=get_total_prize)
+#     for order in orders_list:
+#         print(order)
+
 
 
     # green_apple = Product (name="zielone jabłko", category="warzywa i owoce", prize=4)
@@ -59,5 +127,3 @@ def run_homework ():
     #     return print("Te zamówienia są równe")
     # else:
     #     print ("nie są równe")
-if __name__ == '__main__':
-    run_homework()
