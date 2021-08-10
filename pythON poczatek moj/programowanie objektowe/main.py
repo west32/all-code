@@ -21,33 +21,33 @@ from shop.discount_policy import loyal_policy, christmas_policy
 #     return order_elements
 #
 
-def generate_order_elements():
-    order_elements = []
-    for product_number in range(1, 6):
-        product_name = product_number
-        category = "inne"
-        prize = random.randint(3, 20)
-        product = Product(product_name, category, prize)
-        quantity = random.randint(1, 6)
-        order_element = OrderElement(product, quantity)
-        order_elements.append(order_element)
-    return order_elements
-
-
-
-
-def run_example():
-
-    first_name = "bartek"
-    last_name = "Juda"
-    order_elements = generate_order_elements()
-    standart_order = Order(first_name, last_name, order_elements)
-    loyal_order = Order(first_name, last_name, order_elements, discount_policy=loyal_policy)
-    christmas_order = Order(first_name, last_name, order_elements, discount_policy=christmas_policy)
-
-    print(standart_order)
-    print(loyal_order)
-    print(christmas_order)
+# def generate_order_elements():
+#     order_elements = []
+#     for product_number in range(1, 6):
+#         product_name = product_number
+#         category = "inne"
+#         prize = random.randint(3, 20)
+#         product = Product(product_name, category, prize)
+#         quantity = random.randint(1, 6)
+#         order_element = OrderElement(product, quantity)
+#         order_elements.append(order_element)
+#     return order_elements
+#
+#
+#
+#
+# def run_example():
+#
+#     first_name = "bartek"
+#     last_name = "Juda"
+#     order_elements = generate_order_elements()
+#     standart_order = Order(first_name, last_name, order_elements)
+#     loyal_order = Order(first_name, last_name, order_elements, discount_policy=loyal_policy)
+#     christmas_order = Order(first_name, last_name, order_elements, discount_policy=christmas_policy)
+#
+#     print(standart_order)
+#     print(loyal_order)
+#     print(christmas_order)
 
 
 
@@ -62,28 +62,28 @@ def run_example():
     # print(loyal_order)
     # print(christmas_order)
 
+# def get_total_prize(order):
+#     return order.total_prize
 
+def run_homework ():
+    orders_list= []
+    for _ in range(5):
+        orders_list.append(Order.generate_an_order())
+
+
+    orders_list.sort(key=lambda order: order.calculate_order_prize())
+    for order in orders_list:
+        print(order)
 
 if __name__ == "__main__":
-    run_example()
+    run_homework()
 
 
 
 
 
 
-# def get_total_prize(order):
-#     return order.total_prize_to_sort()
-#
-# def run_homework ():
-#     orders_list= []
-#     for _ in range(5):
-#         orders_list.append(Order.generate_an_order())
-#
-#
-#     orders_list.sort(key=get_total_prize)
-#     for order in orders_list:
-#         print(order)
+
 
 
 
