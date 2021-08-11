@@ -1,19 +1,19 @@
-# Zadanie nr 1
-# Wygeneruj 5 losowych zamówień i posortuj je rosnąco po ich łącznej cenie.
+# Zrefaktoryzuj rozwiązanie zadania drugiego z lekcji funkcja
+# jako obiekt z modułu Programowanie Obiektowe I.
 #
-# Zastosuj własną funkcję zwracającą odpowiednią wartość, która będzie
-# używana do porównania przez funkcję sortującą.
+# Jest to zadanie, w którym dodawaliśmy polityki rabatowe.**
 #
+# Utwórz nowy moduł data_generator i przenieś do niego z pliku
+# main funkcję generującą elementy zamówienia.
 #
-# Zadanie nr 2
-# Dodaj do programu obsługę polityki rabatowej.
+# Ulepsz tę funkcję dodając do niej parametr liczby produktów w
+# zamówieniu z domyślną wartością None (jeżeli nie przekazano oczekiwanej
+# liczby produktów to wylosuj ją z zakresu od 1 do maksymalnej liczby pozycji w zamówieniu).
 #
-# Zaimplementuj funkcje reprezentujące politykę rabatową i przekaż je do
-# konstruktora zamówienia. Jeżeli polityka została przekazana to podczas
-# liczenia łącznej kwoty zamówienia należy naliczyć rabat. Jeżeli nie - obliczamy
-# łączną kwotę jak dotychczas.
+# Zastąp graniczne wartości, z których generowana jest liczba produktów w
+# pozycji zamówienia oraz cena jednostkowa produktu stałymi, czyli zapisanymi
+# według odpowiedniej konwencji zmiennymi globalnymi na poziomie nowo utworzonego
+# modułu data_generator.
 #
-# Zaimplementuj dwie polityki rabatowe:
+# Usuń nieużywaną metodę klasy Order: generate_order.
 #
-# Dla stałych klientów: 5% rabatu na każdą pozycję
-# Rabat świąteczny: rabat 20 PLN dla zamówień o łącznej kwocie powyżej 100 PLN
