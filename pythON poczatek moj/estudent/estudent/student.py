@@ -11,7 +11,7 @@ class Student:
         self._final_grades = []
 
     def __str__(self):
-        return f"Student: {self.first_name} {self.last_name}, promowany: {self.promoted}, średnia: {self.grades_avg():.2f}"
+        return f"Student: {self.first_name} {self.last_name}, promowany: {self.promoted}, średnia: {self.grades_avg:.2f}"
 
     # def get_final_grades(self):
     #     return self._final_grades

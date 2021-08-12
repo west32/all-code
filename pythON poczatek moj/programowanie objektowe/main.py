@@ -43,7 +43,9 @@ def run_example():
     last_name = "Juda"
     order_elements = generate_order_elements()
     order = Order(first_name,last_name,order_elements,)
-    print(order)
+    # print(order)
+    for element in order.order_elements:
+        print (element)
     # standart_order = Order(first_name, last_name, order_elements)
     # loyal_order = Order(first_name, last_name, order_elements, discount_policy=loyal_policy)
     # christmas_order = Order(first_name, last_name, order_elements, discount_policy=christmas_policy)

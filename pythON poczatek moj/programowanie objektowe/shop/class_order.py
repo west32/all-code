@@ -1,13 +1,12 @@
-# Dodaj do klasy Order maksymalną dopuszczalną liczbę elementów w zamówieniu.
+# Do klasy Order dodaj property typu setter, które będzie ustawiać listę pozycji w
+# zamówieniu oraz aktualizować
+# łączną wartość zamówienia (obliczaną na podstawie nowej listy pozycji).
 #
-# Upewnij się, że nie zostaje ona przekroczona podczas tworzenia obiektu klasy
-# Order (w konstruktorze - gdy przekracza stwórz zamówienie tylko z pierwszymi X elementami)
-# i podczas dodawania nowego produktu do zamówienia (gdy przekracza nie dodawaj produktu do
-# zamówienia tylko wypisz informacje o przekroczeniu limitu).
-#
-# Żeby kontrolować liczbę pozycji w generowanym zamówieniu zastąp losową liczbę pozycji
-# argumentem przekazanym do generate_order.
-
+# W setterze sprawdź również czy nowa lista elementów nie przekracza dopuszczalnej
+# dla zamówienia ilości. Jeżeli
+# przekracza, to przypisz do zamówienia tylko tyle pierwszych elementów z nowej listy,
+# ile wynosi maksymalna dopuszczalna
+# wartość w zamówieniu.
 
 from shop.class_Order_element import OrderElement
 from shop.discount_policy import standart_policy
@@ -22,13 +21,26 @@ class Order:
             order_elements = []
         if len(order_elements) > MAX_ORDER_ELEMENTS:
             order_elements = order_elements [:MAX_ORDER_ELEMENTS]
-        self.order_elements = order_elements
+        self._order_elements = Order.order_elements
         self.orderer_last_name = orderer_last_name
         self.orderer_first_name = orderer_first_name
         if discount_policy is None:
             discount_policy= standart_policy
         self.discount_policy = discount_policy
         self.total_prize = self.calculate_order_prize()
+
+    @property
+    def order_elements(self):
+        return self._order_elements
+
+    @order_elements.setter
+    def order_elements(self,value):
+        if len(value) < value:
+            self._order_elements = value
+        else:
+            self._order_elements = value[:MAX_ORDER_ELEMENTS]
+        self.total_prize = self.calculate_order_prize()
+
 
     def __eq__(self, other):
         if self.__class__ != other.__class__:
@@ -37,14 +49,14 @@ class Order:
             return False
         if len(self.order_elements) != len(other.order_elements):
             return False
-        for order_elemenets in self.order_elements:
+        for order_elemenets in self._order_elements:
             if order_elemenets not in other.order_elements:
                 return False
         return True
 
     def calculate_order_prize(self):
             total_prize = 0
-            for element in self.order_elements:
+            for element in self._order_elements:
                 total_prize += element.calculate_position_prize()
             return self.discount_policy(total_prize)
 
@@ -67,19 +79,6 @@ class Order:
             new_element= OrderElement(product,quantity)
             self.order_elements.append(new_element)
             self.total_prize = self.calculate_order_prize()
-    # @classmethod
-    # def generate_an_order(cls):
-    #     number_of_products= random.randint(1,6)
-    #     order_elements = []
-    #     for product_number in range (number_of_products):
-    #         product_name = f"Product- {product_number}"
-    #         product_category = "inne"
-    #         product_prize = random.randint(1,30)
-    #         product = Product (product_name,product_category,product_prize)
-    #         amount = random.randint(1, 5)
-    #         order_elements.append(OrderElement(product, amount))
-    #
-    #     order = Order("Bartłomiej", "Juda", order_elements)
-    #     return order
+
 
 
