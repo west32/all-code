@@ -7,20 +7,21 @@
 #
 # Żeby kontrolować liczbę pozycji w generowanym zamówieniu zastąp losową liczbę pozycji
 # argumentem przekazanym do generate_order.
-import random
-from shop.class_product import Product
+
+
 from shop.class_Order_element import OrderElement
 from shop.discount_policy import standart_policy
+from shop.data_generator import MAX_ORDER_ELEMENTS
 
 
 class Order:
 
-    MAX_ORDER_ELEMENTS = 5
+
     def __init__(self, orderer_first_name, orderer_last_name, order_elements=None, discount_policy=None):
         if order_elements is None:
             order_elements = []
-        if len(order_elements) > Order.MAX_ORDER_ELEMENTS:
-            order_elements = order_elements [:Order.MAX_ORDER_ELEMENTS]
+        if len(order_elements) > MAX_ORDER_ELEMENTS:
+            order_elements = order_elements [:MAX_ORDER_ELEMENTS]
         self.order_elements = order_elements
         self.orderer_last_name = orderer_last_name
         self.orderer_first_name = orderer_first_name
@@ -60,25 +61,25 @@ class Order:
     def __len__(self):
         return len(self.order_elements)
     def add_product(self,product,quantity):
-        if len(self.order_elements)>= Order.MAX_ORDER_ELEMENTS:
+        if len(self.order_elements)>= MAX_ORDER_ELEMENTS:
             print("przykro nie ma juz wolnych miejsc w zamowieniu")
         else:
             new_element= OrderElement(product,quantity)
             self.order_elements.append(new_element)
             self.total_prize = self.calculate_order_prize()
-    @classmethod
-    def generate_an_order(cls):
-        number_of_products= random.randint(1,6)
-        order_elements = []
-        for product_number in range (number_of_products):
-            product_name = f"Product- {product_number}"
-            product_category = "inne"
-            product_prize = random.randint(1,30)
-            product = Product (product_name,product_category,product_prize)
-            amount = random.randint(1, 5)
-            order_elements.append(OrderElement(product, amount))
-
-        order = Order("Bartłomiej", "Juda", order_elements)
-        return order
+    # @classmethod
+    # def generate_an_order(cls):
+    #     number_of_products= random.randint(1,6)
+    #     order_elements = []
+    #     for product_number in range (number_of_products):
+    #         product_name = f"Product- {product_number}"
+    #         product_category = "inne"
+    #         product_prize = random.randint(1,30)
+    #         product = Product (product_name,product_category,product_prize)
+    #         amount = random.randint(1, 5)
+    #         order_elements.append(OrderElement(product, amount))
+    #
+    #     order = Order("Bartłomiej", "Juda", order_elements)
+    #     return order
 
 

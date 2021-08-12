@@ -8,6 +8,7 @@ from shop.class_Order_element import OrderElement
 from shop.class_order import Order
 from shop.class_tax_caculator import Tax_calculator
 from shop.discount_policy import loyal_policy, christmas_policy
+from shop.data_generator import generate_order_elements
 
 # def generate_order_elements():
 #     order_elements = []
@@ -36,18 +37,20 @@ from shop.discount_policy import loyal_policy, christmas_policy
 #
 #
 #
-# def run_example():
+def run_example():
 #
-#     first_name = "bartek"
-#     last_name = "Juda"
-#     order_elements = generate_order_elements()
-#     standart_order = Order(first_name, last_name, order_elements)
-#     loyal_order = Order(first_name, last_name, order_elements, discount_policy=loyal_policy)
-#     christmas_order = Order(first_name, last_name, order_elements, discount_policy=christmas_policy)
-#
-#     print(standart_order)
-#     print(loyal_order)
-#     print(christmas_order)
+    first_name = "bartek"
+    last_name = "Juda"
+    order_elements = generate_order_elements()
+    order = Order(first_name,last_name,order_elements,)
+    print(order)
+    # standart_order = Order(first_name, last_name, order_elements)
+    # loyal_order = Order(first_name, last_name, order_elements, discount_policy=loyal_policy)
+    # christmas_order = Order(first_name, last_name, order_elements, discount_policy=christmas_policy)
+    #
+    # print(standart_order)
+    # print(loyal_order)
+    # print(christmas_order)
 
 
 
@@ -65,18 +68,16 @@ from shop.discount_policy import loyal_policy, christmas_policy
 # def get_total_prize(order):
 #     return order.total_prize
 
-def run_homework ():
-    orders_list= []
-    for _ in range(5):
-        orders_list.append(Order.generate_an_order())
+# def run_homework ():
+#     orders_list= []
+#     for _ in range(5):
+#         orders_list.append(Order.generate_an_order())
 
 
-    orders_list.sort(key=lambda order: order.calculate_order_prize())
-    for order in orders_list:
-        print(order)
+
 
 if __name__ == "__main__":
-    run_homework()
+    run_example()
 
 
 

@@ -10,7 +10,7 @@ class School:
 
     def __init__(self, name, students):
         self.name = name
-        self.students = students
+        self._students = students
         self._promote_lucky_students()
 
     def _promote_lucky_students(self):
@@ -26,12 +26,20 @@ class School:
 
         return f"Szkoła: {self.name}, z {len(self.students)} uczniami: {students}"
 
-    #
-    #     return school
+
+    @property
+    def students(self):
+        return self._students
+
+    @property
+    def best_student(self):
+        if len(self.students):
+            return sorted(self.students, key=lambda  student: student.grades_avg, reverse=True)[0]
+        return None
 
     def assign_student(self, student):
         if len(self.students) < School.MAX_STUDENTS_NUMBER:
-            self.students.append(student)
+            self._students.append(student)
         else:
             print("Nie ma już miejsca!")
 

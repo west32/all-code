@@ -8,13 +8,22 @@ class Student:
         self.first_name = first_name
         self.last_name = last_name
         self.promoted = False
-        self.final_grades = []
+        self._final_grades = []
 
     def __str__(self):
         return f"Student: {self.first_name} {self.last_name}, promowany: {self.promoted}, średnia: {self.grades_avg():.2f}"
 
+    # def get_final_grades(self):
+    #     return self._final_grades
+    @property
+    def final_grades(self):
+        return self._final_grades
+
+    # def grades_avg(self):
+    #     return GradeCalculator.calculate_student_avg(self._final_grades)
+    @property
     def grades_avg(self):
-        return GradeCalculator.calculate_student_avg(self.final_grades)
+        return GradeCalculator.calculate_student_avg(self._final_grades)
 
     def promote(self):
         self.promoted = True
@@ -22,8 +31,8 @@ class Student:
     def add_final_grade(self, grade,check_promotion_policy=None):
         if check_promotion_policy is None:
             check_promotion_policy= GradeCalculator.normal_promotion_policy
-        self.final_grades.append(Grade(value=grade))
-        if check_promotion_policy(self.final_grades):
+        self._final_grades.append(Grade(value=grade))
+        if check_promotion_policy(self._final_grades):
             self.promoted = True
         else:
             self.promoted = True
