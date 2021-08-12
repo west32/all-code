@@ -27,7 +27,7 @@ class Order:
         if discount_policy is None:
             discount_policy= standart_policy
         self.discount_policy = discount_policy
-        self.total_prize = self.calculate_order_prize()
+        self.total_prize = self._calculate_order_prize()
 
     @property
     def order_elements(self):
@@ -39,7 +39,7 @@ class Order:
             self._order_elements = value
         else:
             self._order_elements = value[:MAX_ORDER_ELEMENTS]
-        self.total_prize = self.calculate_order_prize()
+        self.total_prize = self._calculate_order_prize()
 
 
     def __eq__(self, other):
@@ -54,7 +54,7 @@ class Order:
                 return False
         return True
 
-    def calculate_order_prize(self):
+    def _calculate_order_prize(self):
             total_prize = 0
             for element in self._order_elements:
                 total_prize += element.calculate_position_prize()
@@ -78,7 +78,7 @@ class Order:
         else:
             new_element= OrderElement(product,quantity)
             self.order_elements.append(new_element)
-            self.total_prize = self.calculate_order_prize()
+            self.total_prize = self._calculate_order_prize()
 
 
 

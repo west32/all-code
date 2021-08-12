@@ -34,6 +34,7 @@ MAX_QUANTITY = 30
 def generate_order_elements(number_of_products = None):
     if number_of_products is None:
         number_of_products = random.randint(MIN_ORDER_ELEMENTS, MAX_ORDER_ELEMENTS)
+
     order_elements = []
     for product_number in range(number_of_products):
         product_name = f"Produkt-{product_number}"

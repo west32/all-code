@@ -42,10 +42,25 @@ def run_example():
     first_name = "bartek"
     last_name = "Juda"
     order_elements = generate_order_elements()
-    order = Order(first_name,last_name,order_elements,)
+    # order = Order(first_name,last_name,order_elements,)
+
+
+    normal_order = Order(first_name, last_name, order_elements)
+    print(normal_order)
+
+    new_elements = generate_order_elements(3)
+    normal_order.order_elements = new_elements
+    print(normal_order)
+
+    too_many_elements = generate_order_elements(1000)
+    normal_order.order_elements = too_many_elements
+    print(normal_order)
+
+
+
     # print(order)
-    for element in order.order_elements:
-        print (element)
+    # for element in order.order_elements:
+    #     print (element)
     # standart_order = Order(first_name, last_name, order_elements)
     # loyal_order = Order(first_name, last_name, order_elements, discount_policy=loyal_policy)
     # christmas_order = Order(first_name, last_name, order_elements, discount_policy=christmas_policy)
