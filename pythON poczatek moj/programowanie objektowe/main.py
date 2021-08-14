@@ -10,6 +10,7 @@ from shop.class_tax_caculator import Tax_calculator
 from shop.discount_policy import loyal_policy, christmas_policy
 from shop.data_generator import generate_order_elements
 
+
 # def generate_order_elements():
 #     order_elements = []
 #     for product_number in range(1,5):
@@ -38,12 +39,11 @@ from shop.data_generator import generate_order_elements
 #
 #
 def run_example():
-#
+    #
     first_name = "bartek"
     last_name = "Juda"
     order_elements = generate_order_elements()
     # order = Order(first_name,last_name,order_elements,)
-
 
     normal_order = Order(first_name, last_name, order_elements)
     print(normal_order)
@@ -56,8 +56,6 @@ def run_example():
     normal_order.order_elements = too_many_elements
     print(normal_order)
 
-
-
     # print(order)
     # for element in order.order_elements:
     #     print (element)
@@ -68,8 +66,6 @@ def run_example():
     # print(standart_order)
     # print(loyal_order)
     # print(christmas_order)
-
-
 
     # first_name= "Bartłomiej"
     # last_name = "Juda"
@@ -82,6 +78,7 @@ def run_example():
     # print(loyal_order)
     # print(christmas_order)
 
+
 # def get_total_prize(order):
 #     return order.total_prize
 
@@ -91,19 +88,8 @@ def run_example():
 #         orders_list.append(Order.generate_an_order())
 
 
-
-
 if __name__ == "__main__":
     run_example()
-
-
-
-
-
-
-
-
-
 
     # green_apple = Product (name="zielone jabłko", category="warzywa i owoce", prize=4)
     # red_apple = Product (name="czerwone jabłko", category="warzywa i owoce", prize=7)
@@ -122,7 +108,6 @@ if __name__ == "__main__":
     # print(ten_cookies_tax)
     #
     # print (f" cena pary butów butów:{two_shoes.calculate_position_prize()} + podatek: {two_shoes_tax}")
-
 
     # order_over_limit = Order.generate_an_order(10)
     # print (order_over_limit)

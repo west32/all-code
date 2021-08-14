@@ -26,9 +26,9 @@ from shop.class_Order_element import OrderElement
 MIN_QUANTITY = 1
 MIN_PRICE = 1
 MIN_ORDER_ELEMENTS = 1
-MAX_ORDER_ELEMENTS = 8
+MAX_ORDER_ELEMENTS = 5
 MAX_PRIZE = 50
-MAX_QUANTITY = 30
+MAX_QUANTITY = 6
 
 
 def generate_order_elements(number_of_products = None):

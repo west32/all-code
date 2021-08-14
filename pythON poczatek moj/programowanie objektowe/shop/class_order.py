@@ -15,13 +15,12 @@ from shop.data_generator import MAX_ORDER_ELEMENTS
 
 class Order:
 
+    # MAX_ORDER_ELEMENTS = 5
 
     def __init__(self, orderer_first_name, orderer_last_name, order_elements=None, discount_policy=None):
         if order_elements is None:
             order_elements = []
-        if len(order_elements) > MAX_ORDER_ELEMENTS:
-            order_elements = order_elements [:MAX_ORDER_ELEMENTS]
-        self._order_elements = Order.order_elements
+        self._order_elements = order_elements
         self.orderer_last_name = orderer_last_name
         self.orderer_first_name = orderer_first_name
         if discount_policy is None:
@@ -35,11 +34,12 @@ class Order:
 
     @order_elements.setter
     def order_elements(self,value):
-        if len(value) < value:
+        if len(value) < MAX_ORDER_ELEMENTS:
             self._order_elements = value
         else:
             self._order_elements = value[:MAX_ORDER_ELEMENTS]
         self.total_prize = self._calculate_order_prize()
+
 
 
     def __eq__(self, other):
@@ -79,6 +79,8 @@ class Order:
             new_element= OrderElement(product,quantity)
             self.order_elements.append(new_element)
             self.total_prize = self._calculate_order_prize()
+
+
 
 
 
