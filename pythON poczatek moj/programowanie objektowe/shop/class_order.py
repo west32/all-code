@@ -26,7 +26,7 @@ class Order:
         if discount_policy is None:
             discount_policy= standart_policy
         self.discount_policy = discount_policy
-        self.total_prize = self._calculate_order_prize()
+
 
     @property
     def order_elements(self):
@@ -38,7 +38,7 @@ class Order:
             self._order_elements = value
         else:
             self._order_elements = value[:MAX_ORDER_ELEMENTS]
-        self.total_prize = self._calculate_order_prize()
+
 
 
 
@@ -54,17 +54,19 @@ class Order:
                 return False
         return True
 
-    def _calculate_order_prize(self):
-            total_prize = 0
+
+    @property
+    def total_price(self):
+            total_price = 0
             for element in self._order_elements:
-                total_prize += element.calculate_position_prize()
-            return self.discount_policy(total_prize)
+                total_price += element.calculate_position_prize()
+            return self.discount_policy(total_price)
 
 
     def __str__(self):
         gap_between = 20*"="
         orderer = f"zamówienie dla : {self.orderer_first_name} {self.orderer_last_name}"
-        total = f"łączna kwota do zapłaty to: {self.total_prize} PLN"
+        total = f"łączna kwota do zapłaty to: {self.total_price} PLN"
         products = "zamówione produkty:\n"
         for element in self.order_elements:
            products += f" \t {element}\n"
