@@ -3,7 +3,7 @@
 # Zastosuj własną funkcję zwracającą odpowiednią wartość, która będzie używana do porównania przez funkcję sortującą.
 import random
 
-from shop.class_product import Product
+from shop.class_product import Product,ExpiringProduct
 from shop.class_Order_element import OrderElement
 from shop.class_order import Order
 from shop.class_tax_caculator import Tax_calculator
@@ -38,23 +38,25 @@ from shop.data_generator import generate_order_elements
 #
 #
 #
-def run_example():
+def run_homework():
+    mleko = ExpiringProduct(name="mleko",category="nabiał",prize=3,made_year=2020,years_fresh=3)
+    print(mleko.does_expire(actual_year=2021))
+
+    # first_name = "bartek"
+    # last_name = "Juda"
+    # order_elements = generate_order_elements()
+    # # order = Order(first_name,last_name,order_elements,)
     #
-    first_name = "bartek"
-    last_name = "Juda"
-    order_elements = generate_order_elements()
-    # order = Order(first_name,last_name,order_elements,)
-
-    normal_order = Order(first_name, last_name, order_elements)
-    print(normal_order)
-
-    new_elements = generate_order_elements(3)
-    normal_order.order_elements = new_elements
-    print(normal_order)
-
-    too_many_elements = generate_order_elements(1000)
-    normal_order.order_elements = too_many_elements
-    print(normal_order)
+    # normal_order = Order(first_name, last_name, order_elements)
+    # print(normal_order)
+    #
+    # new_elements = generate_order_elements(3)
+    # normal_order.order_elements = new_elements
+    # print(normal_order)
+    #
+    # too_many_elements = generate_order_elements(1000)
+    # normal_order.order_elements = too_many_elements
+    # print(normal_order)
 
     # print(order)
     # for element in order.order_elements:
@@ -89,7 +91,7 @@ def run_example():
 
 
 if __name__ == "__main__":
-    run_example()
+    run_homework()
 
     # green_apple = Product (name="zielone jabłko", category="warzywa i owoce", prize=4)
     # red_apple = Product (name="czerwone jabłko", category="warzywa i owoce", prize=7)
