@@ -44,7 +44,7 @@ def run_example():
     tutor = Tutor(department="A2",name="Miszka", subject="unicornologia")
     print( tutor.guided_department)
     tutor.send_message_from_partents(message="Pozdrowienia")
-    tutor.assign_department("A2")
+    # tutor.assign_department("A2")
 
     tutor.assign_department("B2")
     print(tutor)
