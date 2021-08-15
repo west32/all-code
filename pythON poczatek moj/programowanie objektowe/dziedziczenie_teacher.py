@@ -19,7 +19,11 @@ class Tutor(Teacher):
         super().__init__(name,subject)
 #         rozszerzenie klasy bazowej o dodatkowe pola
         self.guided_department = department
+        self.assign_departments = [department]
 
+    def __str__(self):
+        return f" Wychowawca klasy: {self.guided_department} Nauczyciel przedmiotu: {self.subject} - {self.name}," \
+               f"uczy klasy: {self.assign_departments}"
     # alternatywny sposob:
     # def __init__(self,department,*args,**kwargs):
     # super().__init__(*args,**kwargs)
@@ -27,6 +31,7 @@ class Tutor(Teacher):
 
     def send_message_from_partents(self,message):
         print(f"Wiadomość od rodziców wysłana '{message}'")
+
 
 
 
@@ -42,7 +47,7 @@ def run_example():
     tutor.assign_department("A2")
 
     tutor.assign_department("B2")
-    print(tutor.name)
+    print(tutor)
     print(tutor.assign_departments)
 
 if __name__=="__main__":
