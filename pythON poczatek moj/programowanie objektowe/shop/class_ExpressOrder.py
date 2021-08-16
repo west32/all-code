@@ -1,0 +1,26 @@
+from shop.class_order import Order
+
+class ExpressOrder (Order):
+    def __init__(self, delivery_date, *args,**kwargs ):
+        super().__init__(*args,**kwargs)
+        self.delivery_date = delivery_date
+
+    extra_money_for_express = 15
+
+    @property
+    def total_price(self):
+        total_price = self.extra_money_for_express
+        for element in self._order_elements:
+            total_price += element.calculate_position_prize()
+        return self.discount_policy(total_price)
+
+    def __str__(self):
+        gap_between = 20*"="
+        orderer = f"zamówienie dla : {self.orderer_first_name} {self.orderer_last_name}"
+        total = f"łączna kwota do zapłaty to: {self.total_price} PLN"
+        products = "zamówione produkty:\n"
+        for element in self.order_elements:
+           products += f" \t {element}\n"
+        delivery_date = f"Zamówienie zostanie dostarczone do odbiorcy : {self.delivery_date}"
+        result =  f"\n".join((gap_between, orderer, total,  products, delivery_date, gap_between))
+        return result

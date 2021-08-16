@@ -2,13 +2,14 @@ import random
 from estudent.student import Student
 from estudent.school import School
 from estudent.config import Config
+from estudent.StudentList import StudentList
 
 def generate_students(number_of_students = None):
     if number_of_students is None:
          number_of_students = random.randint(1, School.MAX_STUDENTS_NUMBER)
 
 
-    students = []
+    students = StudentList()
     for student_number in range(number_of_students):
         first_name = f"Student-{student_number}"
         last_name = "Smith"

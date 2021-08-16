@@ -6,6 +6,7 @@ import random
 from shop.class_product import Product,ExpiringProduct
 from shop.class_Order_element import OrderElement
 from shop.class_order import Order
+from shop.class_ExpressOrder import ExpressOrder
 from shop.class_tax_caculator import Tax_calculator
 from shop.discount_policy import loyal_policy, christmas_policy
 from shop.data_generator import generate_order_elements
@@ -39,16 +40,18 @@ from shop.data_generator import generate_order_elements
 #
 #
 def run_homework():
-    mleko = ExpiringProduct(name="mleko",category="nabiał",prize=3,made_year=2020,years_fresh=3)
-    print(mleko.does_expire(actual_year=2021))
+    # mleko = ExpiringProduct(name="mleko",category="nabiał",prize=3,made_year=2020,years_fresh=3)
+    # print(mleko.does_expire(actual_year=2021))
 
-    # first_name = "bartek"
-    # last_name = "Juda"
-    # order_elements = generate_order_elements()
-    # # order = Order(first_name,last_name,order_elements,)
-    #
-    # normal_order = Order(first_name, last_name, order_elements)
-    # print(normal_order)
+    first_name = "bartek"
+    last_name = "Juda"
+    order_elements = generate_order_elements()
+    delivery_date = "12-06-2022"
+    express_order = ExpressOrder(first_name,last_name,delivery_date, order_elements)
+    print(express_order)
+
+    normal_order = Order(first_name, last_name, order_elements)
+    print(normal_order)
     #
     # new_elements = generate_order_elements(3)
     # normal_order.order_elements = new_elements

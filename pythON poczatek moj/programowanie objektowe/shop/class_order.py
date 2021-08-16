@@ -1,12 +1,13 @@
-# Do klasy Order dodaj property typu setter, które będzie ustawiać listę pozycji w
-# zamówieniu oraz aktualizować
-# łączną wartość zamówienia (obliczaną na podstawie nowej listy pozycji).
+# Stwórz klasę ExpressOrder, która dziedziczy po klasie Order.
 #
-# W setterze sprawdź również czy nowa lista elementów nie przekracza dopuszczalnej
-# dla zamówienia ilości. Jeżeli
-# przekracza, to przypisz do zamówienia tylko tyle pierwszych elementów z nowej listy,
-# ile wynosi maksymalna dopuszczalna
-# wartość w zamówieniu.
+# Klasa ta będzie reprezentować zamówienie z ekspresowym terminem
+# dostawy. Względem klasy Order powinna dodatkowo przyjmować informacje
+# o terminie dostawy (jako data w postaci napisu) oraz naliczać dodatkową
+# opłatę za ekspresową dostawę w ramach obliczania łącznego kosztu zamówienia.
+#
+# Zaktualizuj również metodę __str__ dodając do niej informacje o terminie dostawy.
+#
+# W skrypcie main stwórz obiekt klasy ExpressOrder i wypisz informacje o nim.
 
 from shop.class_Order_element import OrderElement
 from shop.discount_policy import standart_policy
@@ -75,14 +76,11 @@ class Order:
     def __len__(self):
         return len(self.order_elements)
     def add_product(self,product,quantity):
-        if len(self.order_elements)>= MAX_ORDER_ELEMENTS:
-            print("przykro nie ma juz wolnych miejsc w zamowieniu")
+        if len(self._order_elements) < MAX_ORDER_ELEMENTS:
+            new_element = OrderElement(product, quantity)
+            self._order_elements.append(new_element)
         else:
-            new_element= OrderElement(product,quantity)
-            self.order_elements.append(new_element)
-            self.total_prize = self._calculate_order_prize()
-
-
+            print("Osiągnięto limit pozycji w zamówieniu")
 
 
 
