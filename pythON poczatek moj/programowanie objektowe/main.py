@@ -12,6 +12,7 @@ from shop.discount_policy import AbsoluteDiscount,DiscountPolicy,PercentageDisco
 from shop.data_generator import generate_order_elements
 
 
+
 # def generate_order_elements():
 #     order_elements = []
 #     for product_number in range(1,5):
@@ -43,18 +44,28 @@ def run_homework():
     # mleko = ExpiringProduct(name="mleko",category="nabiał",prize=3,made_year=2020,years_fresh=3)
     # print(mleko.does_expire(actual_year=2021))
 
-    first_name = "bartek"
-    last_name = "Juda"
+    # first_name = "bartek"
+    # last_name = "Juda"
     order_elements = generate_order_elements()
-    normal_order = Order(first_name, last_name, order_elements)
-    percentage_discount= PercentageDiscount(discount_percentage=10)
-    absolute_discount= AbsoluteDiscount(discount_amount=100)
-    order_percent_discount = Order(first_name,last_name,order_elements,discount_policy=percentage_discount)
-    order_absolute_discount = Order(first_name,last_name,order_elements,discount_policy=absolute_discount)
-    print(normal_order)
-    print(order_percent_discount)
-    print(order_absolute_discount)
-    #
+
+
+
+
+
+    order= ExpressOrder(delivery_date="20.08.2021",
+                        orderer_first_name="Bartłomiej",
+                        orderer_last_name="Juda",
+                        order_elements=order_elements)
+
+    print(order)
+    # percentage_discount= PercentageDiscount(discount_percentage=10)
+    # absolute_discount= AbsoluteDiscount(discount_amount=100)
+    # order_percent_discount = Order(first_name,last_name,order_elements,discount_policy=percentage_discount)
+    # order_absolute_discount = Order(first_name,last_name,order_elements,discount_policy=absolute_discount)
+    # print(normal_order)
+    # print(order_percent_discount)
+    # print(order_absolute_discount)
+    # #
     # new_elements = generate_order_elements(3)
     # normal_order.order_elements = new_elements
     # print(normal_order)

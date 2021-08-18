@@ -1,11 +1,11 @@
 
-
-Wykorzystaj metodę super do odwołania się z poziomu klasy ExpressOrder do bazowej implementacji
-metody total_price i zastąp powtórzony w klasie potomnej algorytm wynikiem z tego odwołania.
-
-
-Pamiętaj, że łączna wartość zamówienia ekspresowego to:
-łączna wartość zamówienia policzona według bazowej metody + opłata za ekspresową dostawę
+#
+# Wykorzystaj metodę super do odwołania się z poziomu klasy ExpressOrder do bazowej implementacji
+# metody total_price i zastąp powtórzony w klasie potomnej algorytm wynikiem z tego odwołania.
+#
+#
+# Pamiętaj, że łączna wartość zamówienia ekspresowego to:
+# łączna wartość zamówienia policzona według bazowej metody + opłata za ekspresową dostawę
 
 
 from shop.class_order import Order
@@ -17,12 +17,10 @@ class ExpressOrder (Order):
 
     extra_money_for_express = 15
 
+
     @property
     def total_price(self):
-        total_price = self.extra_money_for_express
-        for element in self._order_elements:
-            total_price += element.calculate_position_prize()
-        return self.discount_policy(total_price)
+        return super().total_price + self.extra_money_for_express
 
     def __str__(self):
         gap_between = 20*"="
