@@ -22,33 +22,26 @@ class BiochemDepartment(Department):
     MIN_CHEM_GRADE = 3
 
     def assign_student(self,student):
-        if len(self.students) < Department.MAX_STUDENTS:
-            bio_grade = student.final_grade_from_subject("Biologia")
-            chem_grade = student.final_grade_from_subject("Chemia")
-            if bio_grade.value >= self.MIN_BIO_GRADE and chem_grade.value >= self.MIN_CHEM_GRADE:
-                self.students.append(student)
-                return True
-            else:
-                print("za slabe oceny")
-                return False
+        bio_grade = student.final_grade_from_subject("Biologia")
+        chem_grade = student.final_grade_from_subject("Chemia")
+        if bio_grade.value >= self.MIN_BIO_GRADE and chem_grade.value >= self.MIN_CHEM_GRADE:
+           return super().assign_student(student)
         else:
-            print("Nie miejsca ziomuś")
-            return
+            print("za słabe oceny ")
+            return False
+
+
 
 class MathPhysicDepartment(Department):
     MIN_MATH_GRADE = 3
     MIN_PHYS_GRADE = 3
 
     def assign_student(self,student):
-        if len(self.students) < Department.MAX_STUDENTS:
-            math_grade = student.final_grade_from_subject("Matematyka")
-            phys_grade = student.final_grade_from_subject("Fizyka")
-            if math_grade.value >= self.MIN_MATH_GRADE and phys_grade.value >= self.MIN_PHYS_GRADE:
-                self.students.append(student)
-                return True
-            else:
-                print("za slabe oceny")
-                return False
+
+        math_grade = student.final_grade_from_subject("Matematyka")
+        phys_grade = student.final_grade_from_subject("Fizyka")
+        if math_grade.value >= self.MIN_MATH_GRADE and phys_grade.value >= self.MIN_PHYS_GRADE:
+            return super().assign_student(student)
         else:
-            print("Nie miejsca ziomuś")
+            print("za slabe oceny")
             return False

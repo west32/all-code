@@ -8,7 +8,7 @@ from shop.class_Order_element import OrderElement
 from shop.class_order import Order
 from shop.class_ExpressOrder import ExpressOrder
 from shop.class_tax_caculator import Tax_calculator
-from shop.discount_policy import loyal_policy, christmas_policy
+from shop.discount_policy import AbsoluteDiscount,DiscountPolicy,PercentageDiscount
 from shop.data_generator import generate_order_elements
 
 
@@ -46,12 +46,14 @@ def run_homework():
     first_name = "bartek"
     last_name = "Juda"
     order_elements = generate_order_elements()
-    delivery_date = "12-06-2022"
-    express_order = ExpressOrder(first_name,last_name,delivery_date, order_elements)
-    print(express_order)
-
     normal_order = Order(first_name, last_name, order_elements)
+    percentage_discount= PercentageDiscount(discount_percentage=10)
+    absolute_discount= AbsoluteDiscount(discount_amount=100)
+    order_percent_discount = Order(first_name,last_name,order_elements,discount_policy=percentage_discount)
+    order_absolute_discount = Order(first_name,last_name,order_elements,discount_policy=absolute_discount)
     print(normal_order)
+    print(order_percent_discount)
+    print(order_absolute_discount)
     #
     # new_elements = generate_order_elements(3)
     # normal_order.order_elements = new_elements

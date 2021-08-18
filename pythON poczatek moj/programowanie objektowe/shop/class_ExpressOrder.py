@@ -1,3 +1,13 @@
+
+
+Wykorzystaj metodę super do odwołania się z poziomu klasy ExpressOrder do bazowej implementacji
+metody total_price i zastąp powtórzony w klasie potomnej algorytm wynikiem z tego odwołania.
+
+
+Pamiętaj, że łączna wartość zamówienia ekspresowego to:
+łączna wartość zamówienia policzona według bazowej metody + opłata za ekspresową dostawę
+
+
 from shop.class_order import Order
 
 class ExpressOrder (Order):

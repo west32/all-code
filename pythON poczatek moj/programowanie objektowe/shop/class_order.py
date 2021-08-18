@@ -10,7 +10,7 @@
 # W skrypcie main stwórz obiekt klasy ExpressOrder i wypisz informacje o nim.
 
 from shop.class_Order_element import OrderElement
-from shop.discount_policy import standart_policy
+from shop.discount_policy import DiscountPolicy, PercentageDiscount,AbsoluteDiscount
 from shop.data_generator import MAX_ORDER_ELEMENTS
 
 
@@ -25,7 +25,7 @@ class Order:
         self.orderer_last_name = orderer_last_name
         self.orderer_first_name = orderer_first_name
         if discount_policy is None:
-            discount_policy= standart_policy
+            discount_policy= DiscountPolicy()
         self.discount_policy = discount_policy
 
 
@@ -61,7 +61,7 @@ class Order:
             total_price = 0
             for element in self._order_elements:
                 total_price += element.calculate_position_prize()
-            return self.discount_policy(total_price)
+            return self.discount_policy.apply_discount(total_price)
 
 
     def __str__(self):
