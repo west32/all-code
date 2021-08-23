@@ -39,9 +39,12 @@ def generate_order_elements(number_of_products = None):
     for product_number in range(number_of_products):
         product_name = f"Produkt-{product_number}"
         category_name = "Inne"
+        identifier = random.randint(1,9999)
         unit_price = random.randint(MIN_PRICE, MAX_PRIZE)
-        product = Product(product_name, category_name, unit_price)
+        product = Product(product_name, category_name, unit_price,identifier)
         quantity = random.randint(MIN_QUANTITY, MAX_QUANTITY)
         order_elements.append(OrderElement(product, quantity))
+
+
 
     return order_elements

@@ -36,28 +36,42 @@ from shop.data_generator import generate_order_elements
 #         order_element = OrderElement(product, quantity)
 #         order_elements.append(order_element)
 #     return order_elements
+#Zadanie nr 2
+# Zmodyfikuj rozwiązanie poprzedniego zadania.
 #
+# Skorzystaj z dict comprehensions, aby na podstawie słownika z produktami stworzyć nowy,
+# w którym każdy produkt będzie pod kluczem o 1 większym.
 #
+# I tak produkt, który znajdował się w oryginalnym słowniku pod kluczem 15 trafi w nowym pod klucz 16, itd.
+#
+# Następnie skorzystaj z metody update aby “połączyć” oba słowniki.
+# #
 #
 #
 def run_homework():
     # mleko = ExpiringProduct(name="mleko",category="nabiał",prize=3,made_year=2020,years_fresh=3)
     # print(mleko.does_expire(actual_year=2021))
 
-    # first_name = "bartek"
-    # last_name = "Juda"
+    first_name = "bartek"
+    last_name = "Juda"
     order_elements = generate_order_elements()
+    identifier_in_product = {
+        order_element.product.identifier: order_element.product
+        for order_element in order_elements }
+
+    other_dict= {identifier + 1 : product for identifier ,product in identifier_in_product.items()}
+    identifier_in_product.update(other_dict)
 
 
 
 
+    # order= ExpressOrder(delivery_date="20.08.2021",
+    #                     orderer_first_name="Bartłomiej",
+    #                     orderer_last_name="Juda",
+    #                     order_elements=order_elements)
 
-    order= ExpressOrder(delivery_date="20.08.2021",
-                        orderer_first_name="Bartłomiej",
-                        orderer_last_name="Juda",
-                        order_elements=order_elements)
-
-    print(order)
+    print(identifier_in_product)
+    print(other_dict)
     # percentage_discount= PercentageDiscount(discount_percentage=10)
     # absolute_discount= AbsoluteDiscount(discount_amount=100)
     # order_percent_discount = Order(first_name,last_name,order_elements,discount_policy=percentage_discount)

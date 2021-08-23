@@ -1,8 +1,16 @@
-
+# Do klasy Product dodaj pole identifier, będące liczbą.
+#
+# Następnie, zaktualizuj generator pozycji zamówienia, tak
+# aby generował produkty zawierające losowy identyfikator.
+#
+# Użyj dict comprehensions, aby zamienić listę pozycji zamówienia w
+# słownik, gdzie kluczem będzie identyfikator produktu z danej pozycji,
+# a wartością będzie dany obiekt klasy Product.
 
 
 class  Product:
-    def __init__(self,name,category,prize):
+    def __init__(self,name,category,prize,identifier):
+        self.identifier = identifier
         self.name = name
         self.category = category
         self.prize = prize
