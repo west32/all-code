@@ -45,22 +45,82 @@ from shop.data_generator import generate_order_elements
 # I tak produkt, który znajdował się w oryginalnym słowniku pod kluczem 15 trafi w nowym pod klucz 16, itd.
 #
 # Następnie skorzystaj z metody update aby “połączyć” oba słowniki.
-# #
 #
 #
+# #Rozbuduj rozwiązanie zadania drugiego z poprzedniej lekcji dodając funkcję, która będzie sprawdzać
+# których z zamówionych produktów jeszcze brakuje, po otrzymaniu kolejnej dostawy.
+#
+# W tym celu najpierw zaimplementuj funkcję, products_delivery, która reprezentuje otrzymanie dostawy produktów.
+#
+# Funkcja ta powinna zwracać listę produktów przywiezionych w ramach dostawy -
+# w ramach symulacji niech wylosuje z powtórzeniami pięć nazw produktów
+# (z listy dziesięciu dostępnych nazw produktów wylosuj pięć elementów ale tak,
+# żeby mogły się one powtórzyć na liście wynikowej).
+#
+# W skrypcie main najpierw “zamów dostawę”, a potem sprawdź, które produkty są jeszcze potrzebne.
+#
+# Aby porównać otrzymane produkty z listą jeszcze potrzebnych wykorzystaj set.
+#
+# Następnie, tak długo realizuj kolejne zamówienia aż ostatecznie wszystkie z potrzebnych produktów zostaną dostarczone.
+#
+#
+
+def products_delivery(products_list):
+    # delivered_products = []
+    # while len(delivered_products) < 5:
+    #     index= random.randint(0,9)
+    #     delivered_products.append(products_list[index])
+    # znacznie prostszy zapis mikołaja korzystający z list comprahensions:
+    delivered_products = [products_list[random.randint(0, 9)] for _ in range(5)]
+    return delivered_products
+
+
+
 def run_homework():
     # mleko = ExpiringProduct(name="mleko",category="nabiał",prize=3,made_year=2020,years_fresh=3)
     # print(mleko.does_expire(actual_year=2021))
+    products_list = [
+        "mleko",
+        "banany",
+        "masło orzechowe",
+        "ryż",
+        "kurczak",
+        "cola zero",
+        "muesli",
+        "ketchup",
+        "makaron",
+        "sok"
+        ]
+    product_needed_set= set(products_list.copy())
+    delivered_products  = set()
+    result = False
+    answear =""
+    while  answear != "n":
+        answear = input("dostarczyć nową dostawe? t/n?")
+        delivery = products_delivery(products_list)
+        delivered_products.update(delivery)
+        result = product_needed_set.issubset(delivered_products)
+        differences = product_needed_set.difference(delivered_products)
+        print(f" produkty potrzebne: {product_needed_set}")
+        print (f" w dostawie przyjechały: {delivery} ")
+        print(f" prodykty które już mamy: {delivered_products}")
+        print(f"wciąż brakuje : {differences}")
+        print(f" czy mamy juz wszystkie potrzebne produkty? {result}")
 
-    first_name = "bartek"
-    last_name = "Juda"
-    order_elements = generate_order_elements()
-    identifier_in_product = {
-        order_element.product.identifier: order_element.product
-        for order_element in order_elements }
 
-    other_dict= {identifier + 1 : product for identifier ,product in identifier_in_product.items()}
-    identifier_in_product.update(other_dict)
+
+
+
+    # first_name = "bartek"
+    # last_name = "Juda"
+    # order_elements = generate_order_elements()
+    # identifier_in_product = {
+    #     order_element.product.identifier: order_element.product
+    #     for order_element in order_elements }
+    #
+    # other_dict= {identifier + 1 : product for
+    #              identifier ,product in identifier_in_product.items()}
+    # identifier_in_product.update(other_dict)
 
 
 
@@ -70,8 +130,8 @@ def run_homework():
     #                     orderer_last_name="Juda",
     #                     order_elements=order_elements)
 
-    print(identifier_in_product)
-    print(other_dict)
+    # print(identifier_in_product)
+    # print(other_dict)
     # percentage_discount= PercentageDiscount(discount_percentage=10)
     # absolute_discount= AbsoluteDiscount(discount_amount=100)
     # order_percent_discount = Order(first_name,last_name,order_elements,discount_policy=percentage_discount)
