@@ -13,26 +13,30 @@
 import random
 
 
-def func(set):
+def func_set(numbers):
     number = random.randint (0,10)
-    set.add(number)
-    return set
+    return numbers.add(number)
+def func_frozenset (numbers):
+    number = random.randint(0,10)
+    return numbers.union({number})
+
 
 
 
 
 def run_example():
 
-    my_set = set()
-    final_set = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    # numbers = set()
+    numbers = frozenset()
 
+    # frozenset_of_mine = frozenset()
     answear = None
-    while answear != "n" or final_set == my_set:
-        func(my_set)
-        print(my_set)
-        differences = final_set.difference(my_set)
-        print(f"brakuje wciąż {differences}")
-        answear = input("zalosowac ponownie? t/n?")
+    while  len(numbers) < 11:
+        numbers = func_frozenset(numbers)
+        print(numbers)
+
+    print(numbers)
+    #     # answear = input("zalosowac ponownie? t/n?")
 
 
 
