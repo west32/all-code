@@ -1,13 +1,19 @@
-# Napisz metodę obliczającą łączną cenę jabłek, dla konkretnego obiektu Apple oraz łączną
-# cenę ziemniaków dla konkretnego obiektu Potato
-# na podstawie przekazanej w argumencie informacji o liczbie kilogramów.
+# Stwórz odpowiednik klasy Apple jako named tuple.
+#
+#
+# Stwórz instancję takiej krotki, a następnie wypisz zawarte w niej dane na trzy sposoby:
+#
+# korzystając z nazw
+# odwołując się do kolejnych indeksów
+# za pomocą pętli
+
 
 
 class Apple :
-    def __init__(self, species_name, size, prize_per_kg):
+    def __init__(self, species_name, size, price_per_kg):
         self.size = size
         self.species_name = species_name
-        self.prize_per_kg = prize_per_kg
+        self.prize_per_kg = price_per_kg
     def __repr__(self):
         return f"<species_name= {self.species_name} size= {self.size} prize_per_kg= {self.prize_per_kg}>"
     def count_total_apple_prize (self,amount):
