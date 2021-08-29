@@ -28,10 +28,10 @@
 # print(result)
 # print(type(result))
 
-def run_avg_speed(name, distance, time):
-    avg_speed = distance / time
-    print(f"{name} biega z prędkością {avg_speed}")
-
-
-run_data = ("Bob",20,2)
-run_data(*run_data)
+# def run_avg_speed(name, distance, time):
+#     avg_speed = distance / time
+#     print(f"{name} biega z prędkością {avg_speed}")
+#
+#
+# run_data = ("Bob",20,2)
+# run_data(*run_data)

@@ -1,16 +1,15 @@
-# Do klasy Product dodaj pole identifier, będące liczbą.
+# Napisz test sprawdzający poprawność wykonanej w poprzednim module metody magicznej __eq__ w klasie
+# Product - czyli porównywania produktów.
 #
-# Następnie, zaktualizuj generator pozycji zamówienia, tak
-# aby generował produkty zawierające losowy identyfikator.
+# Dla przypomnienia, dwa produkty są sobie równe, gdy mają taką samą nazwę, taką samą kategorię
+# i taką samą cenę jednostkową.
 #
-# Użyj dict comprehensions, aby zamienić listę pozycji zamówienia w
-# słownik, gdzie kluczem będzie identyfikator produktu z danej pozycji,
-# a wartością będzie dany obiekt klasy Product.
+# Wykorzystaj tuple do przygotowania różnych zestawów parametrów danych do algorytmu testującego.
 
 
 class  Product:
-    def __init__(self,name,category,prize,identifier):
-        self.identifier = identifier
+    def __init__(self,name,category,prize):
+
         self.name = name
         self.category = category
         self.prize = prize
@@ -31,3 +30,6 @@ class ExpiringProduct(Product) :
 
     def does_expire(self,actual_year):
         return actual_year - self.made_year < self.years_fresh
+
+
+
