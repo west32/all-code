@@ -3,7 +3,7 @@ from shop.class_product import Product
 
 @dataclass()
 class OrderElement:
-    quantity = int
+    quantity = float
     product = Product
     # def __init__(self,product, quantity):
     #     self.quantity = quantity
@@ -11,6 +11,8 @@ class OrderElement:
 
     def calculate_position_prize(self):
         return self.quantity * self.product.price
+
+
 
     def __eq__(self, other):
         if self.__class__ != other.__class__:
