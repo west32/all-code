@@ -1,23 +1,20 @@
+from dataclasses import dataclass
+from estudent.subject import Subject
+from typing import ClassVar
 
-
+@dataclass
 class Grade:
-
-    FAILING_GRADE = 1
-
-    def __init__(self, value):
-        self.value = value
+    value:int
+    FAILING_GRADE: ClassVar = 1
 
     def is_passing(self):
         return self.value > Grade.FAILING_GRADE
 
     def __repr__(self):
-        return str(self.value)
-
+        return  str(self.value)
+@dataclass()
 class FinalGrade(Grade):
-
-    def __init__(self,value,subject):
-        super().__init__(value)
-        self.subject = subject
+    subject: Subject
 
     def __repr__(self):
         return f"{self.subject}: {self.value}"

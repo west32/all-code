@@ -1,38 +1,26 @@
 from estudent.school import School
 from estudent import data_generator
 from estudent.department import BiochemDepartment,MathPhysicDepartment,Department
+from  estudent.grade import Grade,FinalGrade
+from estudent.subject import Subject
 
-
-def assign_students_to_department(department,students):
-    not_qualified = []
-    for student in students:
-        if not department.assign_student(student):
-            not_qualified.append(student)
-    return not_qualified
 
 
 def run_example():
-    students_prefer_bio_chem = data_generator.generate_students(number_of_students=10)
-    students_prefer_math_phys = data_generator.generate_students(number_of_students=10)
-    students = data_generator.generate_students(number_of_students=5)
+    best_grade = Grade(value=6)
+    failing_garde = Grade(value=1)
+    print(best_grade)
+    print(failing_garde)
+    print(best_grade.is_passing())
+    print(failing_garde.is_passing())
 
-    bio_chem_department = BiochemDepartment(letter_identifier="A",year=1)
-    math_phys_department = MathPhysicDepartment(letter_identifier="B", year=1)
-    general_department = Department(letter_identifier="C",year=1)
+    # final_grade = FinalGrade(value=3)
+    # print(final_grade)
+    # print(final_grade.is_passing())
 
-    not_qualified_bio_chem = assign_students_to_department(bio_chem_department,students_prefer_bio_chem)
-    not_qualified_match_phys = assign_students_to_department(math_phys_department,students_prefer_math_phys)
-    not_qualified = assign_students_to_department(general_department,students)
-    not_qualified += assign_students_to_department(general_department,not_qualified_bio_chem)
-    not_qualified += assign_students_to_department(general_department, not_qualified_match_phys)
-
-    print(bio_chem_department)
-    print(math_phys_department)
-    print(general_department)
-
-
-
-
+    math = Subject(identifier=1,name="Matematyka",is_obligatory=True)
+    final_grade = FinalGrade(value=4,subject=math)
+    print(final_grade)
 if __name__ == '__main__':
     run_example()
 
