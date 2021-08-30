@@ -10,8 +10,8 @@ class Potato :
    price_per_kg = float
 
 
-   def count_total_potato_prize(self, amount):
-       return amount * self.price_per_kg
+   def count_total_potato_prize(self, quantity):
+       return quantity * self.price_per_kg
 
 
 
