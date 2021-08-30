@@ -1,13 +1,17 @@
 # Napisz metodę obliczającą łączną cenę jabłek, dla konkretnego obiektu Apple oraz łączną
 # cenę ziemniaków dla konkretnego obiektu Potato
 # na podstawie przekazanej w argumencie informacji o liczbie kilogramów.
+from dataclasses import dataclass
 
+@dataclass()
 class Potato :
-    def __init__(self, species_name, size, prize_per_kg):
-        self.size = size
-        self.species_name = species_name
-        self.prize_per_kg = prize_per_kg
-    def __repr__(self):
-        return f"<species_name= {self.species_name} size= {self.size} prize_per_kg= {self.prize_per_kg}>"
-    def count_total_potato_prize(self, amount):
-        return amount * self.prize_per_kg
+   species_name = str
+   size = str
+   price_per_kg = float
+
+
+   def count_total_potato_prize(self, amount):
+       return amount * self.price_per_kg
+
+
+

@@ -1,23 +1,16 @@
-# Napisz nową klasę: OrderElement, która będzie reprezentować
-# pozycję w zamówieniu. Taka pozycja będzie zawierać informacje
-# o produkcie i liczbie jego sztuk w zamówieniu.
-# W klasie OrderElement zaimplementuj metodę wypisującą
-# (info o liczbie elementów i produkcie) oraz obliczającą cenę danej pozycji w zamówieniu.
-#
-# W klasie Order zastąp listę produktów listą pozycji w zamówieniu
-# (zmodyfikuj niezbędne funkcje, np. generowanie zamówienia).
-# Napisz metodę obliczającą łączną wartość zamówienia jako sumę wartości wszystkich pozycji
-# (wykorzystując wcześniej napisaną metodę z klasy OrderElement) i wykorzystaj ją w konstruktorze
-# do inicjalizacji łącznej wartości zamówienia.
+from dataclasses import dataclass
 from shop.class_product import Product
-# dwie pozycje w zamówieniu są równe jeżeli ilość jest równa oraz ich produkty są równe
+
+@dataclass()
 class OrderElement:
-    def __init__(self,product, quantity):
-        self.quantity = quantity
-        self.product = product
+    quantity = int
+    product = Product
+    # def __init__(self,product, quantity):
+    #     self.quantity = quantity
+    #     self.product = product
 
     def calculate_position_prize(self):
-        return self.quantity * self.product.prize
+        return self.quantity * self.product.price
 
     def __eq__(self, other):
         if self.__class__ != other.__class__:
