@@ -1,7 +1,19 @@
-from dataclasses import dataclass
+# Stwórz enuma reprezentującego kategorię produktu.
+#
+# Poszczególnym elementom nadaj odpowiednie nazwy (np. FOOD), zaś jako wartość podaj tekst,
+# który ma być traktowany jako “wypisywalna” nazwa kategorii (np. “Jedzenie”).
+#
+# Zastąp nazwę kategorii w produkcie - kategorią (enumem).
+#
+# Dostosuj odpowiednio metodę generującą pozycje w zamówieniu i wypisującą produkt.
 
-@dataclass()
-class  Product:
+
+from dataclasses import dataclass
+from enum import Enum
+
+
+
+class  Product(Enum):
     name: str
     category: str
     price : float
