@@ -5,9 +5,9 @@ from dataclasses import dataclass
 
 @dataclass()
 class Potato :
-   species_name = str
-   size = str
-   price_per_kg = float
+   species_name : str
+   size : str
+   price_per_kg : float
 
 
    def count_total_potato_prize(self, quantity):

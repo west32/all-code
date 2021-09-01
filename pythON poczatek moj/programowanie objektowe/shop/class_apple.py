@@ -11,9 +11,9 @@ from dataclasses import dataclass
 
 @dataclass
 class Apple :
-   size = str
-   species_name = str
-   price_per_kg = float
+   size : str
+   species_name : str
+   price_per_kg : float
 
 
    def count_total_apple_prize(self, quantity):

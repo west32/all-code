@@ -65,47 +65,47 @@ from shop.data_generator import generate_order_elements
 #
 #
 
-def products_delivery(products_list):
-    # delivered_products = []
-    # while len(delivered_products) < 5:
-    #     index= random.randint(0,9)
-    #     delivered_products.append(products_list[index])
-    # znacznie prostszy zapis mikołaja korzystający z list comprahensions:
-    delivered_products = [products_list[random.randint(0, 9)] for _ in range(5)]
-    return delivered_products
+# def products_delivery(products_list):
+#     # delivered_products = []
+#     # while len(delivered_products) < 5:
+#     #     index= random.randint(0,9)
+#     #     delivered_products.append(products_list[index])
+#     # znacznie prostszy zapis mikołaja korzystający z list comprahensions:
+#     delivered_products = [products_list[random.randint(0, 9)] for _ in range(5)]
+#     return delivered_products
 
 
 
 def run_homework():
     # mleko = ExpiringProduct(name="mleko",category="nabiał",prize=3,made_year=2020,years_fresh=3)
     # print(mleko.does_expire(actual_year=2021))
-    products_list = [
-        "mleko",
-        "banany",
-        "masło orzechowe",
-        "ryż",
-        "kurczak",
-        "cola zero",
-        "muesli",
-        "ketchup",
-        "makaron",
-        "sok"
-        ]
-    product_needed_set= set(products_list.copy())
-    delivered_products  = set()
-    result = False
-    answear =""
-    while  answear != "n":
-        answear = input("dostarczyć nową dostawe? t/n?")
-        delivery = products_delivery(products_list)
-        delivered_products.update(delivery)
-        result = product_needed_set.issubset(delivered_products)
-        differences = product_needed_set.difference(delivered_products)
-        print(f" produkty potrzebne: {product_needed_set}")
-        print (f" w dostawie przyjechały: {delivery} ")
-        print(f" prodykty które już mamy: {delivered_products}")
-        print(f"wciąż brakuje : {differences}")
-        print(f" czy mamy juz wszystkie potrzebne produkty? {result}")
+    # products_list = [
+    #     "mleko",
+    #     "banany",
+    #     "masło orzechowe",
+    #     "ryż",
+    #     "kurczak",
+    #     "cola zero",
+    #     "muesli",
+    #     "ketchup",
+    #     "makaron",
+    #     "sok"
+    #     ]
+    # product_needed_set= set(products_list.copy())
+    # delivered_products  = set()
+    # result = False
+    # answear =""
+    # while  answear != "n":
+    #     answear = input("dostarczyć nową dostawe? t/n?")
+    #     delivery = products_delivery(products_list)
+    #     delivered_products.update(delivery)
+    #     result = product_needed_set.issubset(delivered_products)
+    #     differences = product_needed_set.difference(delivered_products)
+    #     print(f" produkty potrzebne: {product_needed_set}")
+    #     print (f" w dostawie przyjechały: {delivery} ")
+    #     print(f" prodykty które już mamy: {delivered_products}")
+    #     print(f"wciąż brakuje : {differences}")
+    #     print(f" czy mamy juz wszystkie potrzebne produkty? {result}")
 
 
 
@@ -122,8 +122,9 @@ def run_homework():
     #              identifier ,product in identifier_in_product.items()}
     # identifier_in_product.update(other_dict)
 
-
-
+    some_order_el = generate_order_elements()
+    order= Order("bob","Kowalski",some_order_el)
+    print(order)
 
     # order= ExpressOrder(delivery_date="20.08.2021",
     #                     orderer_first_name="Bartłomiej",

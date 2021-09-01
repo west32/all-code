@@ -1,26 +1,19 @@
-# Stwórz enuma reprezentującego kategorię produktu.
-#
-# Poszczególnym elementom nadaj odpowiednie nazwy (np. FOOD), zaś jako wartość podaj tekst,
-# który ma być traktowany jako “wypisywalna” nazwa kategorii (np. “Jedzenie”).
-#
-# Zastąp nazwę kategorii w produkcie - kategorią (enumem).
-#
-# Dostosuj odpowiednio metodę generującą pozycje w zamówieniu i wypisującą produkt.
-
-
 from dataclasses import dataclass
 from enum import Enum
 
+class ProductCategory (Enum):
+    FOOD = "Jedznie"
+    OTHERS = "Inne "
 
 
-class  Product(Enum):
-    name: str
-    category: str
+@dataclass
+class  Product:
+    name : str
+    category : ProductCategory
     price : float
 
-
     def __str__(self):
-        return f"Product: {self.name}    |Kategoria: {self.category}     |cena: {self.price}"
+        return f"Product: {self.name}    |Kategoria: {self.category.value}     |cena: {self.price}"
 
 @dataclass
 class ExpiringProduct(Product) :

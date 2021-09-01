@@ -3,8 +3,9 @@ from shop.class_product import Product
 
 @dataclass()
 class OrderElement:
+    product: Product
     quantity : float
-    product : Product
+
 
 
     def calculate_position_prize(self):
