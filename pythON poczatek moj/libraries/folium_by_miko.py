@@ -3,7 +3,7 @@ import random
 import folium
 
 GDANSK_CENTER_POSITION = [54.346320, 18.649246]
-MAP_FILE_LOCATION = "maps.html"
+MAP_FILE_LOCATION = "map.html"
 
 
 def random_point():
@@ -11,7 +11,7 @@ def random_point():
 
 
 def generate_example_map():
-    generated_map = folium.Map(location=GDANSK_CENTER_POSITION, zoom_start=13)
+    generated_map = folium.Map(location=GDANSK_CENTER_POSITION,zoom_start=13)
 
     for number in range(20):
         generated_map.add_child(
