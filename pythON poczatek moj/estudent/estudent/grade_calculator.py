@@ -29,6 +29,8 @@ class GradeCalculator:
 
     @staticmethod
     def calculate_student_avg(final_grades):
+        if len(final_grades) <1:
+            raise ValueError ("Nie można obliczyć średniej oce jeżeli uczeń nie posiada żadnych ocen")
         grade_sum = 0
         for grade in final_grades:
             grade_sum += grade.value

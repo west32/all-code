@@ -5,7 +5,7 @@ from estudent.student import Student
 
 
 class School:
-    MAX_STUDENTS_PER_DEPARTMENT = 15
+    MAX_STUDENTS_PER_DEPARTMENT = 1
     MAX_STUDENTS_NUMBER = 50
 
     def __init__(self, name, students):
@@ -22,6 +22,10 @@ class School:
     def _split_students_to_departments(self):
         departments = {}
         departments_letters = ["A","B","C","D","E","F"]
+        places_in_departments = len(departments_letters) * School.MAX_STUDENTS_PER_DEPARTMENT
+        if places_in_departments < len(self._students):
+            raise Exception("Nie wystarczająca liczba miejsc w klasach!")
+
         current_department_number = -1
         for index, student in enumerate(self.students):
             if index % School.MAX_STUDENTS_PER_DEPARTMENT == 0:
@@ -72,6 +76,7 @@ class School:
             self._students = value
 
         else:
-            print("Nie ma juz meiejsc")
-            self._students = value[:School.MAX_STUDENTS_NUMBER]
+            raise Exception(
+                f"W szkole jest tylko {School.MAX_STUDENTS_NUMBER} miejsc, nie można przypisać {len(value)} uczniów"
+            )
         self.depatments = self._split_students_to_departments()
