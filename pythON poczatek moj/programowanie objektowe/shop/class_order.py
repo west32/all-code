@@ -17,7 +17,7 @@ class Order:
     def __init__(self, orderer_first_name, orderer_last_name, order_elements=None, discount_policy=None):
         if order_elements is None:
             order_elements = []
-        self._order_elements = order_elements
+        self.order_elements = order_elements
         self.orderer_last_name = orderer_last_name
         self.orderer_first_name = orderer_first_name
         if discount_policy is None:
@@ -31,8 +31,8 @@ class Order:
 
     @order_elements.setter
     def order_elements(self,value):
-        if len(value) > self.MAX_ORDER_ELEMENTS:
-            raise ValueError(f"brak wolnego miejsca. Maksymalna liczba elementów zamówienia to{MAX_ORDER_ELEMENTS} ")
+        if len(value) > Order.MAX_ORDER_ELEMENTS:
+            raise ValueError(f"brak wolnego miejsca. Maksymalna liczba elementów zamówienia to{Order.MAX_ORDER_ELEMENTS} ")
         self._order_elements = value
 
 

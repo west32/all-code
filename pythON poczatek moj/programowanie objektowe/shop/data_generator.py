@@ -19,7 +19,7 @@
 #
 
 import random
-from shop.class_order import Order
+
 from shop.class_product import Product,ProductCategory
 from shop.class_Order_element import OrderElement
 

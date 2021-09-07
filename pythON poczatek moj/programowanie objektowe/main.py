@@ -3,13 +3,14 @@
 # Zastosuj własną funkcję zwracającą odpowiednią wartość, która będzie używana do porównania przez funkcję sortującą.
 import random
 
+
 from shop.class_product import Product, ExpiringProduct, ProductCategory
 from shop.class_Order_element import OrderElement
 from shop.class_order import Order
 from shop.class_ExpressOrder import ExpressOrder
 from shop.class_tax_caculator import Tax_calculator
 from shop.discount_policy import AbsoluteDiscount,DiscountPolicy,PercentageDiscount
-from shop.data_generator import generate_order_elements
+from shop.data_generator import generate_order_elements, generate_product, generate_quantity
 
 
 
@@ -121,11 +122,12 @@ def run_homework():
     # other_dict= {identifier + 1 : product for
     #              identifier ,product in identifier_in_product.items()}
     # identifier_in_product.update(other_dict)
-
-    order_elements = generate_order_elements(number_of_products=Order.MAX_ORDER_ELEMENTS +1)
+    products = generate_product()
+    order_elements = generate_order_elements(products_to_generate=Order.MAX_ORDER_ELEMENTS+1)
     order = Order("bob", "Kowalski", order_elements)
     product_category= ProductCategory.FOOD
-    product = Product(name="jablko", category = product_category, price=1)
+
+    # product = Product(name="jablko", category = product_category, price=1,identifier=123)
     # order.add_product(product,10)
 
 
