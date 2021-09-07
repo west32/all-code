@@ -1,6 +1,7 @@
 import random
 
 from estudent.config import Config
+from estudent.errors import PlacesLimitError
 from estudent.student import Student
 
 
@@ -24,7 +25,7 @@ class School:
         departments_letters = ["A","B","C","D","E","F"]
         places_in_departments = len(departments_letters) * School.MAX_STUDENTS_PER_DEPARTMENT
         if places_in_departments < len(self._students):
-            raise Exception("Nie wystarczająca liczba miejsc w klasach!")
+            raise PlacesLimitError(places_limit=School.MAX_STUDENTS_PER_DEPARTMENT)
 
         current_department_number = -1
         for index, student in enumerate(self.students):
@@ -76,7 +77,7 @@ class School:
             self._students = value
 
         else:
-            raise Exception(
+            raise PlacesLimitError (places_limit=School.MAX_STUDENTS_NUMBER,message=
                 f"W szkole jest tylko {School.MAX_STUDENTS_NUMBER} miejsc, nie można przypisać {len(value)} uczniów"
             )
         self.depatments = self._split_students_to_departments()

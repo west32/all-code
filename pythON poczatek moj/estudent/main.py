@@ -8,12 +8,16 @@ from estudent.grade_calculator import GradeCalculator
 
 
 def run_example():
-   #
-   # students = data_generator.generate_students(number_of_students=45)
-   # school = School(name="Hogwart",students=[])
-   # school.students = students
+    from estudent import data_generator
+    from estudent.school import School
 
-    student_avg = GradeCalculator.calculate_student_avg([])
+    def run_example():
+        students = data_generator.generate_students(number_of_students=45)
+        school = School(name="Mała szkoła", students=[])
+        school.students = students
+
+    if __name__ == "__main__":
+        run_example()
 
 if __name__ == '__main__':
     run_example()
