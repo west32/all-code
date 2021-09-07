@@ -3,7 +3,7 @@
 # Zastosuj własną funkcję zwracającą odpowiednią wartość, która będzie używana do porównania przez funkcję sortującą.
 import random
 
-from shop.class_product import Product,ExpiringProduct
+from shop.class_product import Product, ExpiringProduct, ProductCategory
 from shop.class_Order_element import OrderElement
 from shop.class_order import Order
 from shop.class_ExpressOrder import ExpressOrder
@@ -122,9 +122,21 @@ def run_homework():
     #              identifier ,product in identifier_in_product.items()}
     # identifier_in_product.update(other_dict)
 
-    some_order_el = generate_order_elements()
-    order= Order("bob","Kowalski",some_order_el)
+    order_elements = generate_order_elements(number_of_products=Order.MAX_ORDER_ELEMENTS +1)
+    order = Order("bob", "Kowalski", order_elements)
+    product_category= ProductCategory.FOOD
+    product = Product(name="jablko", category = product_category, price=1)
+    # order.add_product(product,10)
+
+
+
+
     print(order)
+
+
+
+
+
 
     # order= ExpressOrder(delivery_date="20.08.2021",
     #                     orderer_first_name="Bartłomiej",

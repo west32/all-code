@@ -1,13 +1,9 @@
-# Stwórz klasę ExpressOrder, która dziedziczy po klasie Order.
+# Zmodyfikuj obsługę przekroczenia dopuszczalnej liczby elementów zamówienia w klasie Order.
 #
-# Klasa ta będzie reprezentować zamówienie z ekspresowym terminem
-# dostawy. Względem klasy Order powinna dodatkowo przyjmować informacje
-# o terminie dostawy (jako data w postaci napisu) oraz naliczać dodatkową
-# opłatę za ekspresową dostawę w ramach obliczania łącznego kosztu zamówienia.
+# W sytuacji, gdy przypisanie nowej listy elementów albo dodanie pozycji do zamówienia spowoduje
+# przekroczenie limitu wyrzuć odpowiedni wyjątek.
 #
-# Zaktualizuj również metodę __str__ dodając do niej informacje o terminie dostawy.
-#
-# W skrypcie main stwórz obiekt klasy ExpressOrder i wypisz informacje o nim.
+# Przetestuj działanie programu w skrypcie main.
 
 from shop.class_Order_element import OrderElement
 from shop.discount_policy import DiscountPolicy, PercentageDiscount,AbsoluteDiscount
@@ -16,7 +12,7 @@ from shop.data_generator import MAX_ORDER_ELEMENTS
 
 class Order:
 
-    # MAX_ORDER_ELEMENTS = 5
+    MAX_ORDER_ELEMENTS = 5
 
     def __init__(self, orderer_first_name, orderer_last_name, order_elements=None, discount_policy=None):
         if order_elements is None:
@@ -35,10 +31,11 @@ class Order:
 
     @order_elements.setter
     def order_elements(self,value):
-        if len(value) < MAX_ORDER_ELEMENTS:
-            self._order_elements = value
-        else:
-            self._order_elements = value[:MAX_ORDER_ELEMENTS]
+        if len(value) > self.MAX_ORDER_ELEMENTS:
+            raise ValueError(f"brak wolnego miejsca. Maksymalna liczba elementów zamówienia to{MAX_ORDER_ELEMENTS} ")
+        self._order_elements = value
+
+
 
 
 
@@ -76,11 +73,13 @@ class Order:
     def __len__(self):
         return len(self.order_elements)
     def add_product(self,product,quantity):
-        if len(self._order_elements) < MAX_ORDER_ELEMENTS:
-            new_element = OrderElement(product, quantity)
-            self._order_elements.append(new_element)
-        else:
-            print("Osiągnięto limit pozycji w zamówieniu")
+        if len(self._order_elements) >= MAX_ORDER_ELEMENTS:
+            raise ValueError("Osiągnieto limit pozycji")
+
+        new_element = OrderElement(product, quantity)
+        self._order_elements.append(new_element)
+
+
 
 
 

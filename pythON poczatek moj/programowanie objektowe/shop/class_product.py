@@ -11,6 +11,7 @@ class  Product:
     name : str
     category : ProductCategory
     price : float
+    identifier: int
 
     def __str__(self):
         return f"Product: {self.name}    |Kategoria: {self.category.value}     |cena: {self.price}"

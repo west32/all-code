@@ -19,7 +19,7 @@
 #
 
 import random
-
+from shop.class_order import Order
 from shop.class_product import Product,ProductCategory
 from shop.class_Order_element import OrderElement
 
@@ -30,18 +30,27 @@ MAX_ORDER_ELEMENTS = 5
 MAX_PRIZE = 50
 MAX_QUANTITY = 6
 
+def generate_quantity():
+    return random.randint(MIN_QUANTITY, MAX_QUANTITY)
 
-def generate_order_elements(number_of_products = None):
-    if number_of_products is None:
-        number_of_products = random.randint(MIN_ORDER_ELEMENTS, MAX_ORDER_ELEMENTS)
+def generate_product(name=None):
+
+    category=ProductCategory.FOOD
+    unit_price = random.randint(MIN_PRICE,MAX_PRIZE)
+    identifier = random.randint(1,300)
+    if name is None:
+        name= f"product = {identifier}"
+
+    return Product(name,category,unit_price,identifier)
+
+def generate_order_elements(products_to_generate = None):
+    if products_to_generate is None:
+        products_to_generate = random.randint(1,MAX_ORDER_ELEMENTS)
 
     order_elements = []
-    for product_number in range(number_of_products):
+    for product_number in range(products_to_generate):
         product_name = f"Produkt-{product_number}"
-        category_name = ProductCategory.FOOD
-        unit_price = random.randint(MIN_PRICE, MAX_PRIZE)
-        identifier = random.randint(0,100)
-        product = Product(product_name,category_name,unit_price)
+        product = generate_product(product_name)
         quantity = random.randint(MIN_QUANTITY, MAX_QUANTITY,)
         order_elements.append(OrderElement(product, quantity))
 
