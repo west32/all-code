@@ -123,12 +123,12 @@ def run_homework():
     #              identifier ,product in identifier_in_product.items()}
     # identifier_in_product.update(other_dict)
     products = generate_product()
-    order_elements = generate_order_elements(products_to_generate=Order.MAX_ORDER_ELEMENTS+1)
+    order_elements = generate_order_elements(products_to_generate=Order.MAX_ORDER_ELEMENTS)
     order = Order("bob", "Kowalski", order_elements)
     product_category= ProductCategory.FOOD
 
-    # product = Product(name="jablko", category = product_category, price=1,identifier=123)
-    # order.add_product(product,10)
+    product = Product(name="jablko", category = product_category, price=1,identifier=123)
+    order.add_product(product,10)
 
 
 

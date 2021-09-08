@@ -8,6 +8,7 @@
 from shop.class_Order_element import OrderElement
 from shop.discount_policy import DiscountPolicy, PercentageDiscount,AbsoluteDiscount
 from shop.data_generator import MAX_ORDER_ELEMENTS
+from shop.errors import LimitError
 
 
 class Order:
@@ -32,7 +33,7 @@ class Order:
     @order_elements.setter
     def order_elements(self,value):
         if len(value) > Order.MAX_ORDER_ELEMENTS:
-            raise ValueError(f"brak wolnego miejsca. Maksymalna liczba elementów zamówienia to{Order.MAX_ORDER_ELEMENTS} ")
+            raise LimitError(allowed_limit=Order.MAX_ORDER_ELEMENTS)
         self._order_elements = value
 
 
@@ -74,7 +75,7 @@ class Order:
         return len(self.order_elements)
     def add_product(self,product,quantity):
         if len(self._order_elements) >= MAX_ORDER_ELEMENTS:
-            raise ValueError("Osiągnieto limit pozycji")
+            raise LimitError(allowed_limit=MAX_ORDER_ELEMENTS,message="Osiągnieto limit pozycji")
 
         new_element = OrderElement(product, quantity)
         self._order_elements.append(new_element)
