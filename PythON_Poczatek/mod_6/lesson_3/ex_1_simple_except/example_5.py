@@ -1,7 +1,7 @@
 
 def handle_even_number(number):
 
-    if number % 2 != 0:
+    if number % 2 !=0:
         raise ValueError("To nie jest liczba parzysta!")
 
     print(f"Dzięki! Wprowadzona liczba podzielona przez 2 to: {number / 2}")
