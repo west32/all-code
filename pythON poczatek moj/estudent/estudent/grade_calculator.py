@@ -32,7 +32,7 @@ class GradeCalculator:
     @staticmethod
     def calculate_student_avg(final_grades):
         if len(final_grades) <1:
-            raise LogicError ("Nie można obliczyć średniej oce jeżeli uczeń nie posiada żadnych ocen")
+            raise LogicError ("Nie można obliczyć średniej ocen jeżeli uczeń nie posiada żadnych ocen")
         grade_sum = 0
         for grade in final_grades:
             grade_sum += grade.value
