@@ -1,6 +1,6 @@
 
 from shop.errors import TemporaryOutOfStock, ProductNotAvailable, NotValidInput
-from shop.order import Order
+from shop.class_order import Order
 from shop.store import Store
 
 
@@ -17,8 +17,12 @@ def say_hello():
 
 
 def init_order():
-    pass
+    first_name = input("podaj imie: ")
+    last_name = input("oraz nazwisko: ")
+
+    return Order(first_name,last_name,)
     # TODO: Pobierz imię i nazwisko i zwróć to czego oczekuje wołający w handle customer
+
 
 
 def want_more_products():
@@ -41,8 +45,12 @@ def add_product_to_order(order, available_products):
         quantity_str = input("Podaj liczbę sztuk: ")
         quantity = parse_quantity(quantity_str)
     except NotValidInput as input_error:
+        print(input_error)
+        return
+
+
         # TODO: Obsłuż błędne dane podane przez użytkownika
-        pass
+
 
     try:
         order.add_product_to_order(available_products[product_index].product, quantity)
@@ -53,13 +61,30 @@ def add_product_to_order(order, available_products):
 
 
 def parse_product_index(product_index_str, max_index):
-    pass
+    try:
+        product_index = int(product_index_str)
+    except ValueError:
+        raise NotValidInput ("numer musi być liczbą")
+    if not 0 <= product_index <= max_index:
+        raise NotValidInput (f"Numer produktu musi mieścic się w przedziale 0 -{max_index} ")
+
+    return product_index
+
     # TODO: Zamień napis na liczbę i upewnij się, że jest poprawna (czyli, że na pewno taki indeks będzie na liście)
     # TODO: W przypadku błędu rzuć odpowiedni wyjątek, który oczekiwany jest w metodzie "wyżej"
 
 
 def parse_quantity(quantity_str):
-    pass
+    try:
+        quantity = int(quantity_str)
+    except ValueError:
+        raise NotValidInput("Liczba sztuk musi byc liczbą")
+
+    if quantity <= 0:
+        raise NotValidInput ("ilość powinna być większa od 0")
+
+    return quantity
+
     # TODO: Zamień napis na liczbę i upewnij się, że jest większa od 0, w razie czego rzuć odpowiedni wyjątek
 
 

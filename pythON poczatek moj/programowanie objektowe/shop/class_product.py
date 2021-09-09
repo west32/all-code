@@ -3,7 +3,8 @@ from enum import Enum
 
 class ProductCategory (Enum):
     FOOD = "Jedznie"
-    OTHERS = "Inne "
+    OTHER= "Inne "
+    TOOLS = "Narzędzia"
 
 
 @dataclass

@@ -11,6 +11,7 @@ from shop.class_ExpressOrder import ExpressOrder
 from shop.class_tax_caculator import Tax_calculator
 from shop.discount_policy import AbsoluteDiscount,DiscountPolicy,PercentageDiscount
 from shop.data_generator import generate_order_elements, generate_product, generate_quantity
+from shop.user_interface import handle_customer
 
 
 
@@ -74,10 +75,12 @@ from shop.data_generator import generate_order_elements, generate_product, gener
 #     # znacznie prostszy zapis mikołaja korzystający z list comprahensions:
 #     delivered_products = [products_list[random.randint(0, 9)] for _ in range(5)]
 #     return delivered_products
-
+from shop.errors import LimitError
 
 
 def run_homework():
+    handle_customer()
+
     # mleko = ExpiringProduct(name="mleko",category="nabiał",prize=3,made_year=2020,years_fresh=3)
     # print(mleko.does_expire(actual_year=2021))
     # products_list = [
@@ -122,18 +125,23 @@ def run_homework():
     # other_dict= {identifier + 1 : product for
     #              identifier ,product in identifier_in_product.items()}
     # identifier_in_product.update(other_dict)
-    products = generate_product()
-    order_elements = generate_order_elements(products_to_generate=Order.MAX_ORDER_ELEMENTS)
-    order = Order("bob", "Kowalski", order_elements)
-    product_category= ProductCategory.FOOD
+    # products = generate_product()
+    # try:
+    #     order_elements = generate_order_elements(products_to_generate=Order.MAX_ORDER_ELEMENTS+1)
+    #     order = Order("bob", "Kowalski", order_elements)
+    # except LimitError as error:
+    #     print (f"Wystąpił błąd: {error}")
+    #     print(f"limit pozycji w zamówieniu wynosi: {error.allowed_limit}")
+    #
+    # product_category= ProductCategory.FOOD
+    #
+    # # product = Product(name="jablko", category = product_category, price=1,identifier=123)
+    # # order.add_product(product,10)
+    #
+    #
 
-    product = Product(name="jablko", category = product_category, price=1,identifier=123)
-    order.add_product(product,10)
 
 
-
-
-    print(order)
 
 
 
