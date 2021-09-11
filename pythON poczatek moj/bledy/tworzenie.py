@@ -9,16 +9,21 @@ def handle_even_number(number_str):
     if number % 2 !=0:
         raise NumberParsingError("To nie jest liczba parzysta")
 
-    print(f"Dzięki! Wprowadzona liczba podzielona przez 2 to: {number / 2}")
-
+    return number /2
 
 def run_example():
     number_str = input("Podaj liczbę parzystą")
 
     try:
-        handle_even_number(number_str)
+        parsed_number = handle_even_number(number_str)
     except NumberParsingError as error:
-        pass
+        print(error)
+    else:
+        result = 100 / parsed_number
+        print(f"Wynik magicznego działania to {result}")
+    finally:
+        print("Kończymy program...")
+
 
 
 
