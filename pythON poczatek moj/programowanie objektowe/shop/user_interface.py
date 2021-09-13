@@ -6,20 +6,41 @@ from shop.errors import TemporaryOutOfStock, ProductNotAvailable, NotValidInput
 from shop.class_order import Order
 from shop.store import Store
 import os
-order_data_path = os.path.join("data","order.txt")
-from shop.save_order import save_order
+
+from shop.persistence import save_order, load_orders
+from enum import Enum
+
+class Action (Enum):
+    NEW_ORDER = "1"
+    HISTORY = "2"
+
 
 def handle_customer():
     say_hello()
-    order = init_order()
-    while want_more_products():
-        add_product_to_order(order, Store.AVAILABLE_PRODUCTS)
-    print_order_summary(order)
-    save_order(order)
+    selected_action = select_action()
+    if selected_action is Action.NEW_ORDER:
+        order = init_order()
+        while want_more_products():
+            add_product_to_order(order, Store.AVAILABLE_PRODUCTS)
+        print_order_summary(order)
+        save_order(order)
+    else:
+        show_history()
 
+def select_action():
+    try:
+        selected_action = input("Jeśli chcesz stworzyć nowe zamówienie wybierz (1),jeśli chcesz wypisać zamowienia wybierz(2)")
+        return Action(selected_action)
+    except ValueError:
+        print("Możliwe są 2 opcje, zakładam więc, że jednak chcesz cos zamówic :)")
+        return Action.NEW_ORDER
 
 def say_hello():
     print("Witaj w naszym sklepie!")
+
+def show_history():
+    orders = load_orders()
+    print(orders)
 
 
 def init_order():
