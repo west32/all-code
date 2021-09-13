@@ -1,8 +1,13 @@
+# Zadanie nr 2
+# Rozbuduj rozwiązanie poprzedniego zadania dając użytkownikowi możliwość wypisania dotychczas
+# złożonych zamówień zamiast składania kolejnego.
 
 from shop.errors import TemporaryOutOfStock, ProductNotAvailable, NotValidInput
 from shop.class_order import Order
 from shop.store import Store
-
+import os
+order_data_path = os.path.join("data","order.txt")
+from shop.save_order import save_order
 
 def handle_customer():
     say_hello()
@@ -10,6 +15,7 @@ def handle_customer():
     while want_more_products():
         add_product_to_order(order, Store.AVAILABLE_PRODUCTS)
     print_order_summary(order)
+    save_order(order)
 
 
 def say_hello():
