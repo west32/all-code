@@ -33,10 +33,15 @@ class Student:
     def promote(self):
         self.promoted = True
 
-    def add_final_grade(self, grade, subject, check_promotion_policy=None):
+    def add_final_grade(self, grade, subject=None, check_promotion_policy=None):
         if check_promotion_policy is None:
             check_promotion_policy= GradeCalculator.normal_promotion_policy
-        self._final_grades.append(FinalGrade(value=grade, subject= subject))
+        if subject:
+            final_grade = FinalGrade(value=grade, subject=subject)
+        else:
+            final_grade = Grade(value=grade)
+        self._final_grades.append(final_grade)
+
 
         if check_promotion_policy(self._final_grades):
             self.promoted = True
