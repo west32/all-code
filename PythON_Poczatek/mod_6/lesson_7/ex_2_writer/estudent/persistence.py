@@ -5,8 +5,8 @@ from estudent.student import Student
 
 def save_students_as_csv(students, file_name="students.csv"):
     with open(file_name, mode="w", newline="") as students_file:
-        # csv_writer = csv.writer(students_file)
-        csv_writer = csv.writer(students_file, delimiter=";", quotechar="|", quoting=csv.QUOTE_ALL)
+        csv_writer = csv.writer(students_file)
+        # csv_writer = csv.writer(students_file, delimiter=";", quotechar="|", quoting=csv.QUOTE_ALL)
         csv_writer.writerow(["first_name", "last_name", "promoted", "final_grades"])
         for student in students:
             serialized_final_grades = ",".join([str(grade.value) for grade in student._final_grades])

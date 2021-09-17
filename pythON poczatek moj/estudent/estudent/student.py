@@ -10,6 +10,12 @@ class Student:
         self.promoted = False
         self._final_grades = []
 
+    @staticmethod
+    def from_csv(first_name,last_name,promoted,grades_values):
+        student= Student(first_name, last_name)
+        student.promoted = promoted
+        student._final_grades = [Grade(value=grade_value) for grade_value in grades_values]
+        return student
     def __str__(self):
         return f"Student: {self.first_name} {self.last_name}, promowany: {self.promoted}, średnia: {self.grades_avg:.2f}"
 
@@ -33,14 +39,10 @@ class Student:
     def promote(self):
         self.promoted = True
 
-    def add_final_grade(self, grade, subject=None, check_promotion_policy=None):
+    def add_final_grade(self, grade, subject, check_promotion_policy=None):
         if check_promotion_policy is None:
-            check_promotion_policy= GradeCalculator.normal_promotion_policy
-        if subject:
-            final_grade = FinalGrade(value=grade, subject=subject)
-        else:
-            final_grade = Grade(value=grade)
-        self._final_grades.append(final_grade)
+            check_promotion_policy = GradeCalculator.normal_promotion_policy
+        self._final_grades.append(FinalGrade(value=grade, subject=subject))
 
 
         if check_promotion_policy(self._final_grades):
