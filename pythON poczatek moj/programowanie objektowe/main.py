@@ -76,7 +76,12 @@ from shop.user_interface import handle_customer
 #     delivered_products = [products_list[random.randint(0, 9)] for _ in range(5)]
 #     return delivered_products
 from shop.errors import LimitError
-
+# Zadanie nr 1
+# Utwórz “ręcznie” plik csv zawierający informacje o dostępnych produktach.
+#
+# Wykorzystaj csv.reader i napisz funkcję “ładującą” stan magazynu z pliku csv.
+#
+# Uruchamiaj ją za każdym razem przy starcie programu.
 
 def run_homework():
     handle_customer()

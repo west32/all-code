@@ -16,8 +16,8 @@ def load_and_save_students(students_serializer):
 
 
 def run_example():
-    # students_serializer = StudentsCSVSerializer()
-    students_serializer = StudentsCSVDictSerializer()
+    students_serializer = StudentsCSVSerializer()
+    # students_serializer = StudentsCSVDictSerializer()
     load_and_save_students(students_serializer)
 
 

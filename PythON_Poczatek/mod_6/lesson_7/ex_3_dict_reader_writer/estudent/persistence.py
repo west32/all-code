@@ -12,7 +12,7 @@ class StudentsCSVSerializer:
         self.cached_headers = None
 
     def save_students(self, students):
-        with open(self.file_name, mode="w", newline="") as students_file:
+        with open(self.file_name, mode="w", newline="", encoding="utf=8") as students_file:
             csv_writer = csv.writer(students_file)
             csv_writer.writerow(["first_name", "last_name", "promoted", "final_grades"])
             for student in students:
@@ -23,7 +23,7 @@ class StudentsCSVSerializer:
         if use_cache and self.cached_students:
             return self.cached_students
         else:
-            with open(self.file_name, newline="") as students_file:
+            with open(self.file_name, newline="", encoding="utf=8") as students_file:
                 csv_reader = csv.reader(students_file)
                 self.cached_headers = next(csv_reader)
                 self.cached_students = [
@@ -41,7 +41,7 @@ class StudentsCSVSerializer:
         if use_cache and self.cached_headers:
             return self.cached_headers
         else:
-            with open(self.file_name, newline="") as students_file:
+            with open(self.file_name, newline="",encoding="utf=8") as students_file:
                 csv_reader = csv.reader(students_file)
                 self.cached_headers = next(csv_reader)
             return self.cached_headers
@@ -55,7 +55,7 @@ class StudentsCSVDictSerializer:
         self.cached_headers = None
 
     def save_students(self, students):
-        with open(self.file_name, mode="w", newline="") as students_file:
+        with open(self.file_name, mode="w", newline="",encoding="utf=8") as students_file:
             headers = ["first_name", "last_name", "promoted", "final_grades"]
             writer = csv.DictWriter(students_file, fieldnames=headers)
             writer.writeheader()
@@ -71,7 +71,7 @@ class StudentsCSVDictSerializer:
         if use_cache and self.cached_students:
             return self.cached_students
         else:
-            with open(self.file_name, newline="") as students_file:
+            with open(self.file_name, newline="",encoding="utf=8") as students_file:
                 csv_reader = csv.DictReader(students_file)
                 self.cached_headers = csv_reader.fieldnames
                 self.cached_students = [

@@ -1,12 +1,9 @@
-# Napisz prosty symulator sklepu.
+# Zadanie nr 1
+# Utwórz “ręcznie” plik csv zawierający informacje o dostępnych produktach.
 #
-# W jednym pliku zdefiniuj dostępne produkty: nazwę (np. chleb i jabłka), dostępną ilość i cenę jednostkową.
-# W innym zaimplementuj funkcję, która na podstawie nazwy produktu i zamawianej ilości stworzy nowe
-# zamówienie i doda je do listy zamówień. Zamówienie składa się z nazwy produktu, zamówionej ilości i łącznej ceny.
-# Obydwa pliki umieść w pakiecie.
+# Wykorzystaj csv.reader i napisz funkcję “ładującą” stan magazynu z pliku csv.
 #
-# Sklep uruchom poprzez plik main, w którym zaimportujesz funkcje do tworzenia zamówienia, wczytasz
-# dane od użytkownika i wypiszesz łączny koszt zakupów. Zastosuj importowanie absolutne postaci from … import.
+# Uruchamiaj ją za każdym razem przy starcie programu.
 
 from sklep.shop import order_2
 

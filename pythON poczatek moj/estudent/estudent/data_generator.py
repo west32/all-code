@@ -47,8 +47,7 @@ def generate_students(number_of_students = None):
 
     students = []
     for student_number in range(number_of_students):
-        first_name = f"Student-{student_number}"
-        last_name = "Smith"
+        first_name, last_name = generate_random_name()
         student = Student(first_name, last_name)
         students.append(student)
         subjects = ["Matematyka", "Fizyka", "Biologia", "Chemia", "Historia"]

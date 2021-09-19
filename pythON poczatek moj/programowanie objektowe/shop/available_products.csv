@@ -1,0 +1,12 @@
+ product_name, product_category, quantity, price
+ Młotek, TOOLS, 8, 15
+ Chleb, FOOD, 23, "3.5"
+ Kosiarka,TOOLS,3,120
+ Rower, OTHER,3, 1500
+ Mleko,FOOD,35, 4
+ Pasta do zębów, OTHER,15,8
+ lody,FOOD,20,5
+
+
+
+
