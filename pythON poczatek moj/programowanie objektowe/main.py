@@ -3,7 +3,7 @@
 # Zastosuj własną funkcję zwracającą odpowiednią wartość, która będzie używana do porównania przez funkcję sortującą.
 import random
 
-
+from shop.persistence import load_available_products
 from shop.class_product import Product, ExpiringProduct, ProductCategory
 from shop.class_Order_element import OrderElement
 from shop.class_order import Order
@@ -11,7 +11,9 @@ from shop.class_ExpressOrder import ExpressOrder
 from shop.class_tax_caculator import Tax_calculator
 from shop.discount_policy import AbsoluteDiscount,DiscountPolicy,PercentageDiscount
 from shop.data_generator import generate_order_elements, generate_product, generate_quantity
+from shop.store import Store
 from shop.user_interface import handle_customer
+
 
 
 
@@ -84,6 +86,7 @@ from shop.errors import LimitError
 # Uruchamiaj ją za każdym razem przy starcie programu.
 
 def run_homework():
+    Store.AVAILABLE_PRODUCTS = load_available_products()
     handle_customer()
 
     # mleko = ExpiringProduct(name="mleko",category="nabiał",prize=3,made_year=2020,years_fresh=3)

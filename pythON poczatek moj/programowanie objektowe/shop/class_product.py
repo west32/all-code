@@ -1,3 +1,4 @@
+import random
 from dataclasses import dataclass
 from enum import Enum
 
@@ -16,6 +17,8 @@ class  Product:
 
     def __str__(self):
         return f"Product: {self.name}    |Kategoria: {self.category.value}     |cena: {self.price}"
+
+
 
 @dataclass
 class ExpiringProduct(Product) :

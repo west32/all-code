@@ -1,55 +1,31 @@
-# Zadanie nr 2
-# Rozbuduj rozwiązanie poprzedniego zadania dając użytkownikowi możliwość wypisania dotychczas
-# złożonych zamówień zamiast składania kolejnego.
+import csv
 
 from shop.errors import TemporaryOutOfStock, ProductNotAvailable, NotValidInput
 from shop.class_order import Order
+from shop.persistence import update_available_products
 from shop.store import Store
-import os
+from shop.class_product import Product
+from shop.class_Order_element import OrderElement
 
-from shop.persistence import save_order, load_orders
-from enum import Enum
-
-class Action (Enum):
-    NEW_ORDER = "1"
-    HISTORY = "2"
 
 
 def handle_customer():
     say_hello()
-    selected_action = select_action()
-    if selected_action is Action.NEW_ORDER:
-        order = init_order()
-        while want_more_products():
-            add_product_to_order(order, Store.AVAILABLE_PRODUCTS)
-        print_order_summary(order)
-        save_order(order)
-    else:
-        show_history()
+    order = init_order()
+    while want_more_products():
+        add_product_to_order(order, Store.AVAILABLE_PRODUCTS)
+    update_available_products(Store.AVAILABLE_PRODUCTS)
+    print_order_summary(order)
 
-def select_action():
-    try:
-        selected_action = input("Jeśli chcesz stworzyć nowe zamówienie wybierz (1),jeśli chcesz wypisać zamowienia wybierz(2)")
-        return Action(selected_action)
-    except ValueError:
-        print("Możliwe są 2 opcje, zakładam więc, że jednak chcesz cos zamówic :)")
-        return Action.NEW_ORDER
 
 def say_hello():
     print("Witaj w naszym sklepie!")
 
-def show_history():
-    orders = load_orders()
-    print(orders)
-
 
 def init_order():
-    first_name = input("podaj imie: ")
-    last_name = input("oraz nazwisko: ")
-
-    return Order(first_name,last_name,)
-    # TODO: Pobierz imię i nazwisko i zwróć to czego oczekuje wołający w handle customer
-
+    first_name = input("Jak masz na imię? ")
+    last_name = input("Jakie jest Twoje nazwisko? ")
+    return Order(first_name, last_name)
 
 
 def want_more_products():
@@ -58,6 +34,10 @@ def want_more_products():
         print("Opcje są tylko dwie - zakładam, że chcesz coś zamówić ;)")
         return True
     return selection.upper() == "T"
+
+
+
+
 
 
 def add_product_to_order(order, available_products):
@@ -75,12 +55,10 @@ def add_product_to_order(order, available_products):
         print(input_error)
         return
 
-
-        # TODO: Obsłuż błędne dane podane przez użytkownika
-
-
     try:
         order.add_product_to_order(available_products[product_index].product, quantity)
+
+
     except TemporaryOutOfStock as error:
         print(f"Niestety mamy dostępne tylko {error.available_quantity} sztuk produktu {error.product_name}")
     except ProductNotAvailable as error:
@@ -91,28 +69,25 @@ def parse_product_index(product_index_str, max_index):
     try:
         product_index = int(product_index_str)
     except ValueError:
-        raise NotValidInput ("numer musi być liczbą")
+        raise NotValidInput(f"Numer produktu musi być liczbą")
+
     if not 0 <= product_index <= max_index:
-        raise NotValidInput (f"Numer produktu musi mieścic się w przedziale 0 -{max_index} ")
+        raise NotValidInput(f"Numer produktu musi mieścić się w przedziale 0 - {max_index}")
 
     return product_index
-
-    # TODO: Zamień napis na liczbę i upewnij się, że jest poprawna (czyli, że na pewno taki indeks będzie na liście)
-    # TODO: W przypadku błędu rzuć odpowiedni wyjątek, który oczekiwany jest w metodzie "wyżej"
 
 
 def parse_quantity(quantity_str):
     try:
         quantity = int(quantity_str)
     except ValueError:
-        raise NotValidInput("Liczba sztuk musi byc liczbą")
+        raise NotValidInput(f"Liczba sztuk musi być liczbą")
 
-    if quantity <= 0:
-        raise NotValidInput ("ilość powinna być większa od 0")
+    if quantity < 1:
+        raise NotValidInput(f"Liczba sztuk to co najmniej 1")
 
     return quantity
 
-    # TODO: Zamień napis na liczbę i upewnij się, że jest większa od 0, w razie czego rzuć odpowiedni wyjątek
 
 
 def print_order_summary(order):
