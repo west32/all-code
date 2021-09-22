@@ -1,4 +1,7 @@
 import csv
+import dataclasses
+import json
+
 from estudent.student import Student
 from estudent import conversion
 
@@ -126,3 +129,35 @@ class StudentCVSDictSerializer:
                 csv_reader= csv.DictReader(students_file)
                 self.cahced_headers= csv_reader.fieldnames
             return self.cahced_headers
+
+class StudentsJSONSerializer:
+    def __init__(self, file_name="students.json"):
+        self.file_name = file_name
+        self.cached_students = None
+
+    def save_students(self,students):
+        students_data = {
+            "students":[
+                {
+                    "first_name" : student.first_name,
+                    "last_name" : student.last_name,
+                    "promoted" : student.promoted,
+                    "final_grades": [dataclasses.asdict(grade) for grade in student.final_grades]
+                }
+                for student in students
+            ]
+        }
+        with open (self.file_name,mode="w",encoding="utf-8") as students_file:
+            json.dump(students_data,students_file,indent=4)
+
+    def load_students(self, use_cache=True):
+        if use_cache and self.cached_students:
+            return self.cached_students
+        else:
+            with open (self.file_name,mode="r") as students_file:
+                students_data= json.load(students_file).get("students",[])
+
+            self.cached_students= [
+                Student.from_json(**student_data,) for student_data in students_data
+            ]
+            return self.cached_students

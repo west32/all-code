@@ -79,15 +79,43 @@ from shop.user_interface import handle_customer
 #     return delivered_products
 from shop.errors import LimitError
 # Zadanie nr 1
-# Utwórz “ręcznie” plik csv zawierający informacje o dostępnych produktach.
+# Zapisz informację o zamówieniu w pliku orders.json.
 #
-# Wykorzystaj csv.reader i napisz funkcję “ładującą” stan magazynu z pliku csv.
+# Na liście zamówień (np. pod kluczem orders) powinny znajdować się wszystkie zrealizowane zamówienia.
 #
-# Uruchamiaj ją za każdym razem przy starcie programu.
-
+# Przed każdym wyłączeniem programu aktualne zamówienie powinno zostać dodane do tej listy.
+#
+# Pomiń zapisywanie informacji o polityce rabatowej.
+#
+# Możesz również tymczasowo wyłączyć możliwość wypisywania historii zamówień zaimplementowaną wcześniej w oparciu o plik orders.txt.
 def run_homework():
     Store.AVAILABLE_PRODUCTS = load_available_products()
+    #
     handle_customer()
+    # orders_data = {
+    #     "orders":
+    #         [
+    #             {
+    #                 "bartek":
+    #                     {
+    #                         "order1":"order",
+    #                         "order2":"order",
+    #                         "order3":"order"
+    #                     }
+    #             },
+    #             {
+    #                 "magda":
+    #                     {
+    #                         "order1": "order",
+    #                         "order2": "order",
+    #                         "order3": "order"
+    #                     }
+    #             }
+    #         ]
+    # }
+    # print(orders_data.get("orders"))
+
+
 
     # mleko = ExpiringProduct(name="mleko",category="nabiał",prize=3,made_year=2020,years_fresh=3)
     # print(mleko.does_expire(actual_year=2021))

@@ -16,6 +16,15 @@ class Student:
         student.promoted = promoted
         student._final_grades = [Grade(value=grade_value) for grade_value in grades_values]
         return student
+
+    @staticmethod
+    def from_json(first_name,last_name,promoted,final_grades):
+        student= Student(first_name,last_name)
+        student.promoted= promoted
+        student._final_grades= [FinalGrade(**grade) for grade in final_grades]
+        return student
+
+
     def __str__(self):
         return f"Student: {self.first_name} {self.last_name}, promowany: {self.promoted}, średnia: {self.grades_avg:.2f}"
 

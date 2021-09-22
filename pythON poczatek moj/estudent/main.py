@@ -1,24 +1,25 @@
 from estudent import data_generator
 import csv
-from estudent.persistance import StudentCsvSerializer,StudentCVSDictSerializer
-
+from estudent.persistance import StudentCsvSerializer,StudentCVSDictSerializer, StudentsJSONSerializer
+import dataclasses
+import json
 
 
 def load_and_save_students(students_serializer):
-    students = data_generator.generate_students(number_of_students=10)
     for student in students_serializer.load_students():
         print(student)
 
     print()
-    print("Jeszcze raz Ci sami uczniowie")
+    print("Jeszcze raz ci sami uczniowie")
     for cached_students in students_serializer.load_students():
         print(cached_students)
-#
+
     new_students = data_generator.generate_students(number_of_students=10)
     students_serializer.save_students(new_students)
+
 def run_example():
-    # students_serializer= StudentCsvSerializer()
-    students_serializer = StudentCVSDictSerializer()
-    load_and_save_students(students_serializer)
+   students_serializer = StudentsJSONSerializer()
+   load_and_save_students(students_serializer)
+
 if __name__=="__main__":
     run_example()

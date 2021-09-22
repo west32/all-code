@@ -1,4 +1,4 @@
 name,category,unit_price,identifier,quantity
-mleko,FOOD,4.0,3542,5
+mleko,FOOD,4.0,3542,10
 masło,FOOD,8.0,3224,30
-komputer,OTHER,3000.0,6745,1
+komputer,OTHER,3000.0,6745,0

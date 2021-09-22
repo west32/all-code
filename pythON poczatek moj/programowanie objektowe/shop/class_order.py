@@ -60,7 +60,7 @@ class Order:
             total_price = 0
             for element in self._order_elements:
                 total_price += element.calculate_position_prize()
-            return self.discount_policy.apply_discount(total_price)
+            return total_price
 
 
     def __str__(self):

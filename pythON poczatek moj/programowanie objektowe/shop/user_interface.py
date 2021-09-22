@@ -1,5 +1,7 @@
 import csv
 
+from pip._internal.utils.misc import enum
+
 from shop.errors import TemporaryOutOfStock, ProductNotAvailable, NotValidInput
 from shop.class_order import Order
 from shop.persistence import update_available_products
@@ -8,18 +10,31 @@ from shop.class_product import Product
 from shop.class_Order_element import OrderElement
 
 
+class Action(enum):
+    NEW_ORDER="1"
+    HISTORY = "2"
 
 def handle_customer():
     say_hello()
-    order = init_order()
-    while want_more_products():
-        add_product_to_order(order, Store.AVAILABLE_PRODUCTS)
-    update_available_products(Store.AVAILABLE_PRODUCTS)
-    print_order_summary(order)
+    select_action = selected_action()
+    if select_action is Action.NEW_ORDER:
+        order = init_order()
+        while want_more_products():
+            add_product_to_order(order, Store.AVAILABLE_PRODUCTS)
+        update_available_products(Store.AVAILABLE_PRODUCTS)
+        print_order_summary(order)
 
 
 def say_hello():
     print("Witaj w naszym sklepie!")
+
+def selected_action():
+    selected_action=input("Chcesz złożyć nowe zamówienie? (1) czy zoabaczyć historię swoich zamówień ? (2)")
+    try:
+        return Action(selected_action)
+    except ValueError:
+        print("możliwe są tylko dwie opcje- domuslnie wybieramy zamówienie :) ")
+        return Action.NEW_ORDER
 
 
 def init_order():

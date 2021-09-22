@@ -1,6 +1,28 @@
 import os
 import csv
 from shop.store import AvailableProduct,ProductCategory
+import dataclasses
+
+import json
+from shop.class_order import Order,OrderElement
+
+
+
+def save_order_in_json_file(order,file_name= "orders.json"):
+    order_data={
+            "orders":
+                [
+                    { "first_name": order.orderer_first_name,
+                      "last_name": order.orderer_last_name,
+                      "zamówione produkty:":",".join([dataclasses.asdict(order_element)])
+
+                    }
+                ]
+        }
+
+    with open (file_name,mode="w",) as order_file:
+
+
 
 
 def update_available_products(available_products, file_name="available_products.csv"):
