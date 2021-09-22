@@ -1,5 +1,4 @@
 name,category,unit_price,identifier,quantity
-młotek,TOOLS,15.0,1243,10
-mleko,FOOD,4.0,3542,25
+mleko,FOOD,4.0,3542,5
 masło,FOOD,8.0,3224,30
-komputer,OTHER,3000.0,6745,2
+komputer,OTHER,3000.0,6745,1
