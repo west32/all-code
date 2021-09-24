@@ -1,17 +1,17 @@
 import csv
 
-from pip._internal.utils.misc import enum
+from enum import Enum
 
 from shop.errors import TemporaryOutOfStock, ProductNotAvailable, NotValidInput
 from shop.class_order import Order
-from shop.persistence import update_available_products
+from shop.persistence import update_available_products,save_order_in_json_file
 from shop.store import Store
 from shop.class_product import Product
 from shop.class_Order_element import OrderElement
 
 
-class Action(enum):
-    NEW_ORDER="1"
+class Action(Enum):
+    NEW_ORDER ="1"
     HISTORY = "2"
 
 def handle_customer():
@@ -21,9 +21,10 @@ def handle_customer():
         order = init_order()
         while want_more_products():
             add_product_to_order(order, Store.AVAILABLE_PRODUCTS)
-        update_available_products(Store.AVAILABLE_PRODUCTS)
         print_order_summary(order)
-
+        save_order_in_json_file(order)
+    else:
+        show_history()
 
 def say_hello():
     print("Witaj w naszym sklepie!")
@@ -35,6 +36,14 @@ def selected_action():
     except ValueError:
         print("możliwe są tylko dwie opcje- domuslnie wybieramy zamówienie :) ")
         return Action.NEW_ORDER
+
+def show_history():
+    first_name = input("Jak masz na imie?")
+    last_name= input ("Jakie jest Twoje nazwisko?")
+    orders = load_orders(first_name,last_name)
+    print ("Twoje zamówienie to")
+    for order in orders:
+        print(order)
 
 
 def init_order():
