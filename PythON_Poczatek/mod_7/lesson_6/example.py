@@ -35,10 +35,11 @@ class PyJazzParser:
         response.raise_for_status()
         self.parsed_page = BeautifulSoup(response.text, features="html.parser")
 
-    # def show_example(self):
-    #     # tag_p = self.parsed_page.p
-    #     # print(tag_p)
-    #     # print(tag_p.name)
+    def show_example(self):
+        tag_p = self.parsed_page.p
+        print(tag_p)
+    #     # print(
+    #     tag_p.name)
     #     # print(tag_p.attrs)
     #     # print(tag_p.string)
     #     # time = self.parsed_page.div.time
@@ -60,9 +61,9 @@ class PyJazzParser:
 def run_example():
     parser = PyJazzParser()
     parser.load_page_html()
-    # parser.show_example()
-    parser.parse_all_previews()
-    print(parser.found_post_previews)
+    parser.show_example()
+    # parser.parse_all_previews()
+    # print(parser.found_post_previews)
 
 
 if __name__ == '__main__':
