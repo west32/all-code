@@ -9,3 +9,6 @@ def index(request):
 def new(request):
     return HttpResponse("NEW PRODUCTS")
 
+def old(request):
+    return HttpResponse("old")
+
