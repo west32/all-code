@@ -31,8 +31,8 @@ def no_duplicates_loop(list):
     return b
 
 def no_duplicates_set(list):
-    set_no_duplicates= set(list)
-    list_no_duplicates= [number for number in set_no_duplicates]
+    list= set(list)
+    list_no_duplicates= [number for number in list]
     return list_no_duplicates
 
 print(no_duplicates_loop(list))
