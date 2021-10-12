@@ -19,7 +19,7 @@ def generate_the_list():
     number_of_elements= random.randint(1,20)
 
     for _ in range (number_of_elements):
-        element = int(random.randint(1, 100))
+        element = random.randint(1, 100)
         list.append(element)
     return list
 a= generate_the_list()
