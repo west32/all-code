@@ -19,17 +19,20 @@ def game (secret_number, name):
 >>>"""))
         number_of_cows= 0
         number_of_bulls=0
-        for index,element in enumerate(guess):
-            if element[index] == element[index] in secret_number:
-                number_of_cows +=1
-            elif element in secret_number:
-                number_of_bulls +=1
-            elif guess == secret_number:
-                if number_of_tries == 1:
-                    print(f"Conratulation {name}, your answer correctly in 1st try! the number it's {secret_number}")
-                else:
-                    print (f"Conratulation {name}, your answer correctly in {number_of_tries} tries! the number it's {secret_number}")
+        if guess == secret_number:
+            if number_of_tries == 1:
+                print(f"Conratulation {name}, your answer correctly in 1st try! the number it's {secret_number}")
                 break
+            else:
+                print(f"Conratulation {name}, your answer correctly in {number_of_tries} tries! the number it's {secret_number}")
+                break
+        for element in (guess):
+            if element == element in secret_number:
+                # number_of_cows +=1
+            # elif element in secret_number:
+                number_of_bulls +=1
+
+        print(f"cows:{number_of_cows}, bulls: {number_of_bulls}")
 
 def run_game():
     name= welcome()
