@@ -25,9 +25,9 @@ class TheNewYorkTimesParser():
         self.parsed_page = BeautifulSoup(response.text, features="html.parser")
 
     def parse_all_preview(self):
-        article_titles = self.parsed_page.findall("h3")
+        article_titles = self.parsed_page.find_all("h3")
         for article_title in article_titles:
-            self.found_post_preview.append(article_title)
+            self.found_post_preview.append(article_title.string)
 
 
 def run_example():
