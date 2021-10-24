@@ -99,8 +99,6 @@ def run_game():
 Welcome in TIC TAC TOE GAME!""")
     player1,player2=get_players_names()
     counter = 0
-    player1_won= False
-    player2_won=False
     while counter !=9:
 
         player_one_move(player1)
