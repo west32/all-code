@@ -53,7 +53,7 @@ def player_one_move(player1):
         print("sorry this place it's already taken")
 
 
-def playet_two_move(player2):
+def player_two_move(player2):
     player2_coordinates = input(f"{player2} enter coordinates: ")
     player2_row = int(player2_coordinates[0]) - 1
     player2_column = int(player2_coordinates[2]) - 1
@@ -66,33 +66,34 @@ def playet_two_move(player2):
 def check_for_p1():
     player1_won = False
     for index, list in enumerate(game):
-        if game[index][0] == 1 and game[index][1] == 1 and game[index][2] == 1:
+        if game[index][0] == "x" and game[index][1] == "x" and game[index][2] == "x":
             player1_won = True
-        elif game[0][index] == 1 and game[1][index] == 1 and game[2][index] == 1:
+        elif game[0][index] == "x" and game[1][index] == "x" and game[2][index] == "x":
             player1_won = True
-        elif game[0][0] == 1 and game[1][1] == 1 and game[2][2] == 1:
+        elif game[0][0] == "x" and game[1][1] == "x" and game[2][2] == "x":
             player1_won = True
-        elif game[0][2] == 1 and game[1][1] == 1 and game[2][0] == 1:
+        elif game[0][2] == "x" and game[1][1] == "x" and game[2][0] == "x":
             player1_won = True
     if player1_won == True:
         print("Player1 WON!")
-        return True
+
 
 
 def check_for_p2():
     player2_won = False
     for index, list in enumerate(game):
-        if game[index][0] == 2 and game[index][1] == 2 and game[index][2] == 2:
+        if game[index][0] == "o" and game[index][1] == "o" and game[index][2] == "o":
             player2_won = True
-        elif game[0][index] == 2 and game[1][index] == 2 and game[2][index] == 2:
+        elif game[0][index] == "o" and game[1][index] == "o" and game[2][index] == "o":
             player2_won = True
-        elif game[0][0] == 2 and game[1][1] == 2 and game[2][2] == 2:
+        elif game[0][0] == "o" and game[1][1] == "o" and game[2][2] == "o":
             player2_won = True
-        elif game[0][2] == 2 and game[1][1] == 2 and game[2][0] == 2:
+        elif game[0][2] == "o" and game[1][1] == "o" and game[2][0] == "o":
             player2_won = True
     if player2_won == True:
         print("Player2 WON!")
-        return True
+
+
 
 def run_game():
     print("""
@@ -105,7 +106,7 @@ Welcome in TIC TAC TOE GAME!""")
         check_for_p1()
         counter +=1
         if counter <9:
-            playet_two_move(player2)
+            player_two_move(player2)
             check_for_p2()
             counter +=1
         else:
