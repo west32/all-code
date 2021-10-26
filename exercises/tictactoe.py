@@ -3,9 +3,13 @@
 
 game= [["_","_","_"] for x in range(3)]
 
-
-def draw_board(player=None,coordinates=None):
-    mark=""
+def welcome():
+    print("""
+    Welcome in TIC TAC TOE GAME!""")
+def draw_board(game= None,player=None,coordinates=None):
+    if game == None:
+        game=game
+    mark="_"
 
 
     if player == 1:
@@ -63,7 +67,7 @@ def player_two_move(player2):
     else:
         print("sorry this place it's already taken")
 
-def check_for_p1():
+def check_for_p1(player1):
     player1_won = False
     for index, list in enumerate(game):
         if game[index][0] == "x" and game[index][1] == "x" and game[index][2] == "x":
@@ -75,11 +79,11 @@ def check_for_p1():
         elif game[0][2] == "x" and game[1][1] == "x" and game[2][0] == "x":
             player1_won = True
     if player1_won == True:
-        print("Player1 WON!")
+        print(f"{player1} WON!")
+        return True
 
 
-
-def check_for_p2():
+def check_for_p2(player2):
     player2_won = False
     for index, list in enumerate(game):
         if game[index][0] == "o" and game[index][1] == "o" and game[index][2] == "o":
@@ -91,29 +95,52 @@ def check_for_p2():
         elif game[0][2] == "o" and game[1][1] == "o" and game[2][0] == "o":
             player2_won = True
     if player2_won == True:
-        print("Player2 WON!")
+        print(f"{player2} WON!")
+        return True
+
+def reset():
+    game= [["_","_","_"] for x in range(3)]
+    return game
+def game_loop(player1,player2):
+
+    draw_board(coordinates=(1, 1))
+    empty_places= 9
+    while empty_places !=0:
+        total_empty_rows_places=0
+
+
+        player_one_move(player1)
+        player1_won=check_for_p1(player1)
+        if player1_won==True:
+            break
+        for row in game:
+            total_empty_rows_places += row.count("_")
+            empty_places=total_empty_rows_places
+
+        if empty_places != 0:
+            player_two_move(player2)
+            player2_won = check_for_p2(player2)
+            if player2_won == True:
+                break
+            total_empty_rows_places = 0
+            for row in game:
+                total_empty_rows_places += row.count("_")
+                empty_places=total_empty_rows_places
+        else:
+            print("TIE\nGAME OVER")
 
 
 
 def run_game():
-    print("""
-Welcome in TIC TAC TOE GAME!""")
+    welcome()
     player1,player2=get_players_names()
-    counter = 0
-    while counter !=9:
-
-        player_one_move(player1)
-        check_for_p1()
-        counter +=1
-        if counter <9:
-            player_two_move(player2)
-            check_for_p2()
-            counter +=1
-        else:
-            print("GAME OVER")
-
-
-
+    player1_wins = 0
+    player2_wins = 0
+    game_loop(player1,player2)
+    play_again=input("Do you want to play again? (Y/N) ".upper())
+    while play_again != "N":
+        game=reset()
+        game_loop(player1,player2)
 
 
 

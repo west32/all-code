@@ -65,3 +65,15 @@ def player_one_move(player1):
     else:
         print("sorry this place it's already taken")
 player_one_move(player1)
+
+print(game)
+# free_places=9
+# epmty_places=0
+# for row in game:
+#     row_epmty_places = row.count("_")
+#     print(row_epmty_places)
+#     epmty_places += row_epmty_places
+#     print(epmty_places)
+#     free_places = epmty_places
+#
+# print(free_places)
