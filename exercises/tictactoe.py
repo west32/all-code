@@ -3,15 +3,15 @@
 
 game= [["_","_","_"] for x in range(3)]
 
+
+
 def welcome():
     print("""
     Welcome in TIC TAC TOE GAME!""")
-def draw_board(game= None,player=None,coordinates=None):
-    if game == None:
-        game=game
+def draw_board(game,player=None,coordinates=None,):
+
+
     mark="_"
-
-
     if player == 1:
         mark = "x"
     elif player== 2:
@@ -46,28 +46,28 @@ def get_players_names():
     return player_one_name,player_two_name
 
 
-def player_one_move(player1):
+def player_one_move(game,player1):
     player1_coordinates=input(f"{player1} enter coordinates: ")
     player1_row = int(player1_coordinates[0])-1
     player1_column = int(player1_coordinates[2])-1
 
     if game[player1_row][player1_column] == "_":
-        draw_board(player=1,coordinates=(player1_row,player1_column))
+        draw_board(game,player=1,coordinates=(player1_row,player1_column))
     else:
         print("sorry this place it's already taken")
 
 
-def player_two_move(player2):
+def player_two_move(game,player2):
     player2_coordinates = input(f"{player2} enter coordinates: ")
     player2_row = int(player2_coordinates[0]) - 1
     player2_column = int(player2_coordinates[2]) - 1
 
     if game[player2_row][player2_column] == "_":
-        draw_board(player=2, coordinates=(player2_row, player2_column))
+        draw_board(game,player=2, coordinates=(player2_row, player2_column))
     else:
         print("sorry this place it's already taken")
 
-def check_for_p1(player1):
+def check_for_p1(game,player1):
     player1_won = False
     for index, list in enumerate(game):
         if game[index][0] == "x" and game[index][1] == "x" and game[index][2] == "x":
@@ -83,7 +83,7 @@ def check_for_p1(player1):
         return True
 
 
-def check_for_p2(player2):
+def check_for_p2(game,player2):
     player2_won = False
     for index, list in enumerate(game):
         if game[index][0] == "o" and game[index][1] == "o" and game[index][2] == "o":
@@ -98,19 +98,20 @@ def check_for_p2(player2):
         print(f"{player2} WON!")
         return True
 
-def reset():
+def reset(game):
     game= [["_","_","_"] for x in range(3)]
     return game
-def game_loop(player1,player2):
+def game_loop(game,player1,player2):
 
-    draw_board(coordinates=(1, 1))
+
+    draw_board(game,coordinates=(1, 1))
     empty_places= 9
     while empty_places !=0:
         total_empty_rows_places=0
 
 
-        player_one_move(player1)
-        player1_won=check_for_p1(player1)
+        player_one_move(game,player1)
+        player1_won=check_for_p1(game,player1)
         if player1_won==True:
             break
         for row in game:
@@ -118,8 +119,8 @@ def game_loop(player1,player2):
             empty_places=total_empty_rows_places
 
         if empty_places != 0:
-            player_two_move(player2)
-            player2_won = check_for_p2(player2)
+            player_two_move(game,player2)
+            player2_won = check_for_p2(game,player2)
             if player2_won == True:
                 break
             total_empty_rows_places = 0
@@ -136,11 +137,15 @@ def run_game():
     player1,player2=get_players_names()
     player1_wins = 0
     player2_wins = 0
-    game_loop(player1,player2)
-    play_again=input("Do you want to play again? (Y/N) ".upper())
-    while play_again != "N":
-        game=reset()
-        game_loop(player1,player2)
+    game= [["_","_","_"] for x in range(3)]
+    game_loop(game,player1,player2)
+    play_again=input("Do you want to play again? (Y/N) ").upper()
+    print(play_again)
+    while play_again !="N":
+        game=reset(game)
+        game_loop(game,player1,player2)
+        play_again = input("Do you want to play again? (Y/N) ").upper()
+
 
 
 
