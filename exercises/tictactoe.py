@@ -1,7 +1,8 @@
 
 
 
-game= [["_","_","_"] for x in range(3)]
+player_1_wins=0
+player_2_wins=0
 
 
 
@@ -55,6 +56,7 @@ def player_one_move(game,player1):
         draw_board(game,player=1,coordinates=(player1_row,player1_column))
     else:
         print("sorry this place it's already taken")
+        player_one_move(game,player1)
 
 
 def player_two_move(game,player2):
@@ -66,6 +68,7 @@ def player_two_move(game,player2):
         draw_board(game,player=2, coordinates=(player2_row, player2_column))
     else:
         print("sorry this place it's already taken")
+        player_two_move(game,player2)
 
 def check_for_p1(game,player1):
     player1_won = False
@@ -103,7 +106,6 @@ def reset(game):
     return game
 def game_loop(game,player1,player2):
 
-
     draw_board(game,coordinates=(1, 1))
     empty_places= 9
     while empty_places !=0:
@@ -113,6 +115,8 @@ def game_loop(game,player1,player2):
         player_one_move(game,player1)
         player1_won=check_for_p1(game,player1)
         if player1_won==True:
+            player_1_wins +=1
+            print(f"{player1} {player_1_wins}:{player_2_wins} {player2}")
             break
         for row in game:
             total_empty_rows_places += row.count("_")
@@ -122,6 +126,8 @@ def game_loop(game,player1,player2):
             player_two_move(game,player2)
             player2_won = check_for_p2(game,player2)
             if player2_won == True:
+                player_2_wins +=1
+                print(f"{player1} {player_1_wins}:{player_2_wins} {player2}")
                 break
             total_empty_rows_places = 0
             for row in game:
@@ -129,18 +135,16 @@ def game_loop(game,player1,player2):
                 empty_places=total_empty_rows_places
         else:
             print("TIE\nGAME OVER")
+            print(f"{player1} {player_1_wins}:{player_2_wins} {player2}")
 
 
 
 def run_game():
     welcome()
     player1,player2=get_players_names()
-    player1_wins = 0
-    player2_wins = 0
     game= [["_","_","_"] for x in range(3)]
     game_loop(game,player1,player2)
     play_again=input("Do you want to play again? (Y/N) ").upper()
-    print(play_again)
     while play_again !="N":
         game=reset(game)
         game_loop(game,player1,player2)
