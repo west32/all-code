@@ -11,13 +11,14 @@ sheet = workbook['Sheet1']
 ws= workbook.active
 
 #
+kg_cell = sheet.cell(sheet.max_row,3)
 date_cell = sheet.cell(sheet.max_row + 1, 1)
 weight_cell = sheet.cell(sheet.max_row, 2)
 today_date=input("eneter today's date:")
 today_weight= float(input("eneter today's weight"))
 date_cell.value=today_date
 weight_cell.value=today_weight
-
+kg_cell.value="kg"
 weights= Reference(sheet,
                    min_row=2,
                    max_row=sheet.max_row,
