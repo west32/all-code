@@ -11,7 +11,7 @@ if guess == secret_number:
 else:
     min_range = 0
     max_range = 100
-    advice = input("")
+    advice = input("Use advice 'lower' or 'up' ")
     while True:
 
         number_of_tries +=1
