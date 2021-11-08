@@ -19,6 +19,9 @@ def game (secret_number, name):
         guess = input(
 """ Enter 4-digits number
 >>>""")
+        if len(guess) > 4:
+            print(f"4-digits number...it's not {len(guess)}- digit number ")
+            continue
         number_of_cows= 0
         number_of_bulls=0
         if guess == secret_number:
@@ -37,10 +40,10 @@ def game (secret_number, name):
                     b_index= index
                     if a==b and  a_index == b_index:
                         number_of_cows +=1
-                        continue
+
                     elif a==b and a_index != b_index:
                         number_of_bulls +=1
-                        continue
+
 
 
         print(f"cows:{number_of_cows}, bulls: {number_of_bulls}")

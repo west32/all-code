@@ -28,14 +28,14 @@ def passwordGenerator():
         password_str += element
     return password_str
 
-print(passwordGenerator())
+
 
 # or
 
 s = "abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()?"
 passlen = 8
 p =  "".join(random.sample(s,passlen ))
-print (p)
+
 
 #  or
 
