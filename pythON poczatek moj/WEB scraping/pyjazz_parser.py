@@ -49,7 +49,8 @@ def run_example():
     parser = PyJazzParser()
     parser.load_page()
     parser.parse_all_previews()
-    print(parser.found_post_previews)
+    for article in parser.found_post_previews:
+        print(f" course title'{article.title}', published date- {article.publish_date}")
 
 if __name__=="__main__":
     run_example()

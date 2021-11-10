@@ -7,6 +7,7 @@ stop = stop the car
 quit = quit the program 
 
 '''
+print(help)
 command = ""
 started = False
 while True:

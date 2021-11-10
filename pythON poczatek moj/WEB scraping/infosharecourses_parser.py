@@ -43,17 +43,18 @@ class InfoShareParser:
 
 
 
-    def check(self):
-        title_tag = self.parsed_page.find_all(is_title_contain_tag)
-
-        print(title_tag.string)
+    # def check(self):
+    #     title_tag = self.parsed_page.find_all(is_title_contain_tag)
+    #
+    #     print(title_tag.string)
 
 
 def run_example():
     parser = InfoShareParser()
     parser.load_page()
     parser.parse_all_previews()
-    print(parser.found_course_previews)
+    for article in parser.found_course_previews:
+        print(f"course title = '{article.title}', type = {article.type}, duration = {article.time}")
 
 if __name__=="__main__":
     run_example()

@@ -1,0 +1,23 @@
+====================
+zamówienie dla : b j
+łączna kwota do zapłaty to: 243 PLN
+zamówione produkty:
+ 	 Product: Młotek    |Kategoria: Narzędzia     |cena: 93 x 1
+ 	 Product: Chleb    |Kategoria: Jedznie     |cena: 30 x 5
+
+====================
+====================
+zamówienie dla : b j
+łączna kwota do zapłaty to: 14 PLN
+zamówione produkty:
+ 	 Product: Rower    |Kategoria: Inne      |cena: 14 x 1
+
+====================
+====================
+zamówienie dla : bart j
+łączna kwota do zapłaty to: 489 PLN
+zamówione produkty:
+ 	 Product: Rower    |Kategoria: Inne      |cena: 24 x 1
+ 	 Product: Chleb    |Kategoria: Jedznie     |cena: 93 x 5
+
+====================

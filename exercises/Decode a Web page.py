@@ -34,7 +34,8 @@ def run_example():
     parser = TheNewYorkTimesParser()
     parser.load_page()
     parser.parse_all_preview()
-    print(parser.found_post_preview)
+    for post in parser.found_post_preview:
+        print(post)
 
 
 if __name__ == "__main__":
