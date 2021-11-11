@@ -44,6 +44,35 @@
                     "quantity": 1
                 }
             ]
+        },
+        {
+            "client_first_name": "bart",
+            "client_last_name": "juda",
+            "order_elements": [
+                {
+                    "product": {
+                        "name": "M\u00c5\u201aotek",
+                        "category": "TOOLS",
+                        "unit_price": 35.0,
+                        "identifier": 6
+                    },
+                    "quantity": 4
+                },
+                {
+                    "product": {
+                        "name": "Kosiarka",
+                        "category": "TOOLS",
+                        "unit_price": 700.0,
+                        "identifier": 2
+                    },
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "client_first_name": "",
+            "client_last_name": "",
+            "order_elements": []
         }
     ]
 }

@@ -1,9 +1,4 @@
-# word= input("gimme a word :D ")
-#
-# if word[0] == word[-1] and word [1] == word[-2]:
-#     print("this is a palindrome")
-# else:
-#     print("it's not a palindrome")
+
 
 word= str(input("enter a string"))
 rvs_word = word[::-1]

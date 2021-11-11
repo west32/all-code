@@ -10,8 +10,8 @@ sheet = workbook['Sheet1']
 ws = workbook.active
 
 #
-kg_cell = sheet.cell(sheet.max_row, 3)
-date_cell = sheet.cell(sheet.max_row + 1, 1)
+kg_cell = sheet.cell(sheet.max_row + 1, 3)
+date_cell = sheet.cell(sheet.max_row  , 1)
 weight_cell = sheet.cell(sheet.max_row, 2)
 today_date = input("eneter today's date:")
 today_weight = float(input("eneter today's weight"))

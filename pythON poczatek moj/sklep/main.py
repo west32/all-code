@@ -5,8 +5,8 @@
 #
 # Uruchamiaj ją za każdym razem przy starcie programu.
 
-from sklep.shop import order_2
-
+# from sklep.shop import order_2
+from shop import order_2
 name_of_product = None
 while name_of_product != 'x':
 

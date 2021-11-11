@@ -6,9 +6,9 @@
 #
 # sqrt(x) - liczy pierwiastek drugiego stopnia z podanej wartości x
 # pow(x, y) - podnosi x do potęgi y
-
+import math
 def calculate_c (a,b):
-    import math
+
 
     return math.sqrt(math.pow(a,2) + math.pow(b,2))
 

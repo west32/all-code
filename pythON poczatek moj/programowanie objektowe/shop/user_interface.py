@@ -4,7 +4,7 @@ from enum import Enum
 
 from shop.errors import TemporaryOutOfStock, ProductNotAvailable, NotValidInput
 from shop.class_order import Order
-from shop.persistence import update_available_products,save_order_in_json_file
+from shop.persistence import load_store,save_store
 from shop.store import Store
 from shop.class_product import Product
 from shop.class_Order_element import OrderElement
@@ -22,7 +22,7 @@ def handle_customer():
         while want_more_products():
             add_product_to_order(order, Store.AVAILABLE_PRODUCTS)
         print_order_summary(order)
-        save_order_in_json_file(order)
+        save_store(order)
     else:
         show_history()
 
@@ -40,7 +40,7 @@ def selected_action():
 def show_history():
     first_name = input("Jak masz na imie?")
     last_name= input ("Jakie jest Twoje nazwisko?")
-    orders = load_orders(first_name,last_name)
+    orders = load_store(first_name)
     print ("Twoje zamówienie to")
     for order in orders:
         print(order)

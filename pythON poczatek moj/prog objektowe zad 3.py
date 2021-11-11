@@ -83,12 +83,12 @@ def run_homework ():
 
     cookie = Product ("cookie","food",3)
     milk = Product ("milk","food", 5)
-
     Bartek_order = Order ("Bartek","Juda",products_list=[cookie,milk])
     first_order= generate_an_order()
     print_order(first_order)
     second_order = generate_an_order()
     print_order(second_order)
+    print_order(Bartek_order)
 
 
 if __name__ == '__main__':

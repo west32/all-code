@@ -3,7 +3,7 @@
 # Zastosuj własną funkcję zwracającą odpowiednią wartość, która będzie używana do porównania przez funkcję sortującą.
 import random
 
-from shop.persistence import load_available_products
+from shop.persistence import load_store,save_store
 from shop.class_product import Product, ExpiringProduct, ProductCategory
 from shop.class_Order_element import OrderElement
 from shop.class_order import Order
@@ -89,9 +89,10 @@ from shop.errors import LimitError
 #
 # Możesz również tymczasowo wyłączyć możliwość wypisywania historii zamówień zaimplementowaną wcześniej w oparciu o plik orders.txt.
 def run_homework():
-    Store.AVAILABLE_PRODUCTS = load_available_products()
+    Store.AVAILABLE_PRODUCTS = load_store()
     #
     handle_customer()
+    save_store(Store.AVAILABLE_PRODUCTS)
     # orders_data = {
     #     "orders":
     #         [

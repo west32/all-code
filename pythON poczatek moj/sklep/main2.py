@@ -1,5 +1,5 @@
-from sklep.shop2.order import make_new_order,orders_list
-from sklep.shop2.product_store import is_product_on_list
+from shop2.order import make_new_order,orders_list
+from shop2.product_store import is_product_on_list
 
 def run_the_shop():
 

@@ -9,7 +9,7 @@
 # a wczytanie danych i uruchomienie obliczeń w pliku powyżej pakietu.
 #
 # Skorzystaj ze wzoru: wartość = wartość pocz. * (1 + procent/100) ^ liczba lat
-print(__name__)
+
 import calculations.funkcja_calculate
 initial= float(input("jaki kapital? "))
 perc= int(input("jakie oprcentowanie? "))
