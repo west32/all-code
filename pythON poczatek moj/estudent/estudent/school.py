@@ -1,8 +1,4 @@
-import random
-
-from estudent.config import Config
 from estudent.errors import PlacesLimitError
-from estudent.student import Student
 
 
 class School:

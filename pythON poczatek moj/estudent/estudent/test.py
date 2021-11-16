@@ -1,6 +1,5 @@
-from estudent.grade_calculator import GradeCalculator
-from estudent.student import Student
 from shop.class_product import Product
+
 
 # def test_add_final_grades():
 #     parameters = [
@@ -42,23 +41,24 @@ from shop.class_product import Product
 #     return f"Product: {self.name}    |Kategoria: {self.category}     |cena: {self.prize}"
 
 def test_eq_product():
-    parameters =  [
+    parameters = [
         ("woda", "jedzenie", 2, "woda", "jedzenie", 2, True),
-        ("woda", "jedzenie",2, "woda", "jedzenie", 3, False),
-        ("woda", "napoje" ,2, "woda", "jedzenie", 2, False),
-        ("woda","jedzenie",4, "chleb", "jedzenie", 2, False ),
-        ("woda", "jedzenie", 3, "woda", "jedzenie", 3, True )
+        ("woda", "jedzenie", 2, "woda", "jedzenie", 3, False),
+        ("woda", "napoje", 2, "woda", "jedzenie", 2, False),
+        ("woda", "jedzenie", 4, "chleb", "jedzenie", 2, False),
+        ("woda", "jedzenie", 3, "woda", "jedzenie", 3, True)
     ]
 
     for params in parameters:
-        name, category, price, other_name, other_category , other_price, expected_result = params
-        product = Product(name,category,price)
-        other_product = Product(other_name,other_category,other_price)
+        name, category, price, other_name, other_category, other_price, expected_result = params
+        product = Product(name, category, price)
+        other_product = Product(other_name, other_category, other_price)
         result = product == other_product
 
         if result == expected_result:
             print("OK")
         else:
             print(f" Błąd! wynik powinien byc : {result}, zamiast {expected_result}")
+
 
 test_eq_product()
