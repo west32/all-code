@@ -39,5 +39,5 @@ dates = Reference(sheet, min_col=1, min_row=2, max_row=sheet.max_row)
 chart.set_categories(dates)
 
 sheet.add_chart(chart, 'd2')
-
+del sheet._chart[0]
 workbook.save("weight3.xlsx")
