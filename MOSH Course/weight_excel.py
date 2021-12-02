@@ -15,10 +15,10 @@ while True:
     kg_cell = sheet.cell(sheet.max_row + 1, 3)
     date_cell = sheet.cell(sheet.max_row, 1)
     weight_cell = sheet.cell(sheet.max_row, 2)
-    today_date = input("eneter today's date:")
+    today_date = input("eneter today's date: ")
     if today_date.lower() == "x":
         break
-    today_weight = float(input("eneter today's weight"))
+    today_weight = float(input("eneter today's weight "))
     date_cell.value = today_date
     weight_cell.value = today_weight
     kg_cell.value = "kg"
