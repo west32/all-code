@@ -9,7 +9,7 @@
 numbers_dict = {}
 input_number=int(input("podaj liczbe:"))
 
-for number in range (1,input_number):
+for number in range (1,input_number+1):
     numbers_dict[number]=number*number
 
 print(numbers_dict)

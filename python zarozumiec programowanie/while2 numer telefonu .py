@@ -13,7 +13,7 @@ numer = input('podaj numer telefonu')
 numer = numer.replace("-", "")
 sformatowany_numer = ""
 for index, letter in enumerate(numer):
-    if index %3==0 and index !=0:
-        sformatowany_numer +="-"
+    if index % 3 == 0 and index != 0:
+        sformatowany_numer += "-"
     sformatowany_numer += letter
 print(sformatowany_numer)
